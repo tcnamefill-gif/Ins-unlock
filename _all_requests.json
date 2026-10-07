@@ -1,0 +1,450 @@
+[
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/",
+    "type": "document",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078353"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/stylesheet.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078610"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/gsmthemstyle.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078667"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/modernstyle.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078708"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/jquery.dataTables.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078767"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/css/custom-animation.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078796"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/nprogress.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078823"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/css/bootstrap-icons/bootstrap-icons.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078849"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/owl.carousel.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078876"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/owl.theme.default.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078902"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/css/notyf.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078935"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/select2.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.078992"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/css/select2-bootstrap-5-theme.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079024"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/css/tabler-icons.min.css?v=2027.62.34",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079050"
+  },
+  {
+    "method": "GET",
+    "url": "https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079075"
+  },
+  {
+    "method": "GET",
+    "url": "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079101"
+  },
+  {
+    "method": "GET",
+    "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+    "type": "stylesheet",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079134"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/1768653718832-removebg-preview.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079165"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/file-000000008a1c821194fdb3e45bbe6d37.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079191"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/1000049445.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079216"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/unlock-tool-activation.webp",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079242"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/amt.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079285"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/tsm-tool.webp",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079311"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/smartfrptool.jpg",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079336"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/1000052176.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079360"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/mr-auth-tool.webp",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079386"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/tfm-tool.webp",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079411"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/newrent.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079436"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/default-2.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079460"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/sigmaplus.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079485"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/1000084452.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079514"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/92244.jpg",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079540"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/1000077968.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079618"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/64890.webp",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079665"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/rft-loader-otp.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079691"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/146665.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079733"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/1000063063.png",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.079759"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/resource/auth-login-illustration.svg",
+    "type": "image",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.439651"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.439784"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/jquery.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.439887"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/select2.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.439969"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/html2pdf.bundle.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440010"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/popper.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440055"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/bootstrap.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440103"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/jquery.dataTables.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440166"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/js/nprogress.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440201"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/lottie-player.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440227"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/owl.carousel.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440270"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/js/notyf.min.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440298"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/js/auth.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440324"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/js/gsmtheme.js?v=2027.62.34",
+    "type": "script",
+    "post_data": null,
+    "time": "2026-10-07T13:27:01.440364"
+  },
+  {
+    "method": "GET",
+    "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:04.197166"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/dm-sans-v17-latin-600.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:04.197278"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/dm-sans-v17-latin-700.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:04.197345"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/dm-sans-v17-latin-500.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:04.197425"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/dm-sans-v17-latin-regular.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:04.197479"
+  },
+  {
+    "method": "POST",
+    "url": "https://ins-unlocker.com/cdn-cgi/rum?",
+    "type": "xhr",
+    "post_data": "{\"startTime\":1791359819386,\"pageloadId\":\"97223511-c0d1-4b55-9593-484ad483b5b9\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://ins-unlocker.com/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.9.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"120\",\"bv\":\"120\"},\"memory\":{\"totalJSHeapSize\":11969081,\"usedJSHeapSize\":7540197,\"jsHeapSizeLimit\":4091543552},\"firstPaint\":3560,\"firstContentfulPaint\":3560,\"timingsV2\":{\"nextHopProtocol\":\"h2\",\"domainLookupStart\":6,\"domainLookupEnd\":167,\"connectStart\":167,\"connectEnd\":593,\"secureConnectionStart\":371,\"requestStart\":593,\"responseStart\":1590,\"responseEnd\":1633,\"domInteractive\":4579,\"domComplete\":6291,\"loadEventStart\":6291,\"loadEventEnd\":6295,\"finalResponseHeadersStart\":1590,\"firstInterimResponseStart\":0,\"transferSize\":35342,\"decodedBodySize\":166671},\"siteToken\":\"2287004a01cc43a29cc3e556e6c47024\",\"st\":2}",
+    "time": "2026-10-07T13:27:06.545582"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/public/uploads/favicon.ico",
+    "type": "other",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.545652"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/public/uploads/favicon.ico",
+    "type": "other",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.587465"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/media/70a3272b-2d5d-4c26-a3b9-8cd3b464f3b4-removebg-preview.png",
+    "type": "other",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.607999"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/common/css/bootstrap-icons/fonts/bootstrap-icons.woff2?e34853135f9e39acf64315236852cd5a",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.963490"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/ibm-plex-mono-v20-latin-700.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.963682"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/ibm-plex-mono-v20-latin-600.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.964017"
+  },
+  {
+    "method": "GET",
+    "url": "https://ins-unlocker.com/frontend/fonts/ibm-plex-mono-v20-latin-regular.woff2",
+    "type": "font",
+    "post_data": null,
+    "time": "2026-10-07T13:27:06.964100"
+  }
+]

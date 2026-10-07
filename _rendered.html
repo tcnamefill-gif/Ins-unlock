@@ -1,0 +1,2389 @@
+<html lang="en" data-bs-theme="orange" translate="no"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="GSM Theme">
+    <title>INS Unlocker - ✨ INS Unlocker 🔧 Phone Repair Tools | 🔓 FRP Unlock | 📱 IMEI Repair Software ⚡</title>
+    <meta name="description" content="INS UNLOCKER offers professional phone repair tools, mobile unlocking software, IMEI repair &amp; FRP bypass solutions. Trusted by technicians across India.">
+    <meta name="keywords" content="ins unlocker, insunlocker, inunlocker, insunloker, insunlockr, insunlockar, insunlockre, in sunlocker, i n s unlocker, ins unlockr, ins unloker, ins unlockar, insunlcker, insunlocer, insunlockir, insunlockor, insunlockur, ins unlockre, insunlockher, insunlockar, insunloker, ins unlockir, insunlocker, insunlockar, ins unlockor, insunlockur, insunlockre, ins unlcker, insunlocer, insunlockar, insunlockre, insunlockir, ins unlockar, ins unlockre, insunlockor, insunlockur, ins unloker, ins unlockir, ins unlockor, ins unlockur, insunlockre, phone repair tools India, mobile unlock software, FRP bypass tool, IMEI repair software, Android unlock tool, mobile servicing tools, digital tools store, phone unlock software, Samsung FRP remove, Xiaomi FRP tool, Oppo unlock software">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="INS Unlocker - ✨ INS Unlocker 🔧 Phone Repair Tools | 🔓 FRP Unlock | 📱 IMEI Repair Software ⚡">
+    <meta property="og:description" content="INS UNLOCKER offers professional phone repair tools, mobile unlocking software, IMEI repair &amp; FRP bypass solutions. Trusted by technicians across India.">
+    <meta property="og:image" content="https://ins-unlocker.com/media/1768653718832-removebg-preview.png">
+    <meta name="twitter:card" content="https://ins-unlocker.com/media/1768653718832-removebg-preview.png">
+    <link rel="canonical" href="https://ins-unlocker.com">
+    <link rel="icon" href="/media/70a3272b-2d5d-4c26-a3b9-8cd3b464f3b4-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/stylesheet.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/gsmthemstyle.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/modernstyle.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/jquery.dataTables.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/common/css/custom-animation.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/nprogress.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/common/css/bootstrap-icons/bootstrap-icons.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/owl.carousel.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/owl.theme.default.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/common/css/notyf.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/select2.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/frontend/css/select2-bootstrap-5-theme.min.css?v=2027.62.34">
+    <link rel="stylesheet" href="https://ins-unlocker.com/common/css/tabler-icons.min.css?v=2027.62.34">
+    <script>
+/* UPI Payment → Redirect to gateway with user email (fresh) */
+(function(){
+    'use strict';
+
+    const BHARATPAY_URL = 'https://ins-unlocker.com/public/uploads/gpay/paynow.php';
+    const WHOAMI_URL    = '/public/uploads/x.php';
+
+    function findAmount() {
+        var ids = ['addAmountField','amount','addAmount','amountField','inputAmount'];
+        for (var i = 0; i < ids.length; i++) {
+            var el = document.getElementById(ids[i]);
+            if (el) { var v = parseFloat(el.value); if (v > 0) return v; }
+        }
+        var named = document.querySelector('input[name="amount"]');
+        if (named) { var v = parseFloat(named.value); if (v > 0) return v; }
+        return 0;
+    }
+
+    // ✅ Fresh email from whoami (highest priority)
+    function fetchUserFromWhoami(callback) {
+        fetch(WHOAMI_URL, {
+            method: 'GET',
+            credentials: 'include',
+            cache: 'no-store'
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            if (d && d.ok && d.email) {
+                try {
+                    localStorage.setItem('user_email', d.email);
+                    localStorage.setItem('user_name', d.name || '');
+                } catch(e) {}
+                callback(d.email, d.name || '', true);
+            } else {
+                callback('', '', false);
+            }
+        })
+        .catch(function() { callback('', '', false); });
+    }
+
+    // ✅ Cached fallback (only if whoami fails)
+    function findUserEmailCached() {
+        try {
+            var em = localStorage.getItem('user_email');
+            if (em) return em;
+        } catch(e) {}
+        try {
+            var em2 = sessionStorage.getItem('user_email');
+            if (em2) return em2;
+        } catch(e) {}
+        var el = document.getElementById('dash_email');
+        if (el && el.value) return el.value.trim();
+        var any = document.querySelector('input[type="email"]');
+        if (any && any.value) return any.value.trim();
+        return '';
+    }
+
+    function findUserNameCached() {
+        try {
+            var nm = localStorage.getItem('user_name');
+            if (nm) return nm;
+        } catch(e) {}
+        try {
+            var nm2 = sessionStorage.getItem('user_name');
+            if (nm2) return nm2;
+        } catch(e) {}
+        var el = document.getElementById('dash_name');
+        if (el && el.value) return el.value.trim();
+        return '';
+    }
+
+    function isUpi(gw) {
+        return (gw === 'BharatPe' || /upi/i.test(gw) || /paytm/i.test(gw));
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+
+        var form = document.getElementById('paymentForm');
+        if (!form) { console.warn('[BP] #paymentForm not found'); return; }
+
+        var submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+        var radios    = form.querySelectorAll('input[name="payment_methode"]');
+
+        function updateButton() {
+            if (!submitBtn) return;
+            var sel = form.querySelector('input[name="payment_methode"]:checked');
+            if (sel && isUpi(sel.value)) {
+                submitBtn.innerHTML = '📱 PAY VIA PHONEPE';
+            } else {
+                submitBtn.innerHTML = '💳 Pay Now';
+            }
+        }
+
+        for (var i = 0; i < radios.length; i++) {
+            radios[i].addEventListener('change', updateButton);
+        }
+        updateButton();
+
+        // ✅ ALWAYS fetch fresh from whoami on page load — background refresh
+        fetchUserFromWhoami(function(freshEmail, freshName, ok){
+            if (ok) {
+                console.log('[BP] Fresh email loaded:', freshEmail);
+            } else {
+                console.warn('[BP] whoami failed — will use cache fallback');
+            }
+        });
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            var sel = form.querySelector('input[name="payment_methode"]:checked');
+            if (!sel) { alert('Select a payment gateway'); return false; }
+            var gw = sel.value;
+
+            var amount = findAmount();
+            if (amount <= 0) { alert('Enter a valid amount'); return false; }
+
+            // Binance / GSM Pay → normal submit
+            if (gw === 'GSM Pay' || /binance/i.test(gw)) {
+                form.submit();
+                return false;
+            }
+
+            // UPI → ALWAYS fetch fresh email first, then redirect
+            if (isUpi(gw)) {
+                var redirected = false;
+                var redirectOnce = function(em, nm){
+                    if (redirected) return;
+                    redirected = true;
+                    doRedirect(amount, em, nm);
+                };
+
+                var btn = submitBtn;
+                if (btn) {
+                    btn.disabled = true;
+                    btn.innerHTML = '⏳ Fetching details...';
+                }
+
+                // Try fresh fetch first
+                fetchUserFromWhoami(function(fe, fn, ok){
+                    if (ok && fe) {
+                        redirectOnce(fe, fn);
+                    } else {
+                        // Fallback to cache
+                        var cachedEmail = findUserEmailCached();
+                        var cachedName  = findUserNameCached();
+                        redirectOnce(cachedEmail, cachedName);
+                    }
+                });
+
+                // Safety timeout — 4s
+                setTimeout(function(){
+                    var cachedEmail = findUserEmailCached();
+                    var cachedName  = findUserNameCached();
+                    redirectOnce(cachedEmail, cachedName);
+                }, 4000);
+
+                return false;
+            }
+
+            form.submit();
+            return false;
+        });
+
+        function doRedirect(amount, email, name) {
+            console.log('[BP] Redirecting. Amount:', amount, '| Email:', email || '(none)', '| Name:', name || '(none)');
+
+            var url = BHARATPAY_URL
+                    + '?amount=' + encodeURIComponent(amount);
+
+            if (email) url += '&email=' + encodeURIComponent(email);
+            if (name)  url += '&name='  + encodeURIComponent(name);
+
+            window.location.href = url;
+        }
+
+        console.log('[BP] Ready ✅');
+    });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+/* ===== Container ko har screen size par full width fit karo (left-right dono side) ===== */
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  box-sizing: border-box !important;
+}
+
+/* ===== Header aur Slider ke beech ka gap poori tarah hatao ===== */
+header.gsm-header {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.gsm-dropdown {
+  margin: 0 !important;
+}
+
+header.gsm-header + .my-4,
+.gsm-dropdown + .my-4 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#carouselExampleIndicators {
+  margin-top: 0 !important;
+}
+
+#carouselExampleIndicators .carousel-indicators {
+  margin: 0 !important;
+}
+
+body {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+#carouselExampleIndicators {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  border-radius: 0 !important;
+}
+
+.carousel-inner,
+.carousel-item {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.carousel-item img,
+.carousel-item .img-fluid {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* ===== Body/html me koi extra horizontal scroll na aaye ===== */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
+/* ===== Row ke andar bhi agar side gap dikhe to fix karo ===== */
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 992px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* ===== Small mobile ===== */
+@media (max-width: 480px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+</style>
+
+<!-- ======================================================= -->
+<!-- Part 9: Header layout fix - Logo left, baki sab right    -->
+<!-- ======================================================= -->
+
+<style>
+  .gsm-theme-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+  }
+
+  /* Logo hamesha bilkul left par rahe */
+  .nav-logo {
+    flex-shrink: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* Nav links, account button, hamburger - sab ek group mein right side */
+  .nav-container {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  .customer-header-auth,
+  .navbar-toggler {
+    flex-shrink: 0 !important;
+  }
+
+  /* Header ka color halka yellow */
+  header.gsm-header {
+    background-color: #fff9db !important;
+  }
+
+  /* Header ka sara text orange */
+  header.gsm-header,
+  header.gsm-header a,
+  header.gsm-header span,
+  header.gsm-header .nav-links li a,
+  header.gsm-header .customer-name,
+  header.gsm-header .customer-header-auth,
+  header.gsm-header .customer-header-auth div,
+  header.gsm-header .navbar-toggler,
+  header.gsm-header svg path,
+  header.gsm-header svg circle {
+    color: #f97316 !important;
+    stroke: #f97316 !important;
+  }
+
+  /* ================= RIGHT-SIDE ACCOUNT BUTTON ================= */
+  /* Account box orange aur text/icons white */
+  header.gsm-header .nav-auth > .login-btn,
+  header.gsm-header .nav-auth > .login-btn:visited,
+  header.gsm-header .nav-auth > .login-btn.btn-primary,
+  header.gsm-header .customer-header-auth > .btn,
+  header.gsm-header .customer-header-auth > .btn:visited {
+    background-color: #f97316 !important;
+    background-image: none !important;
+    border: 1px solid #f97316 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Login/Register text aur icons white */
+  header.gsm-header .nav-auth > .login-btn,
+  header.gsm-header .nav-auth > .login-btn *,
+  header.gsm-header .nav-auth > .login-btn svg,
+  header.gsm-header .nav-auth > .login-btn svg path,
+  header.gsm-header .nav-auth > .login-btn svg circle,
+  header.gsm-header .nav-auth > .login-btn svg rect,
+  header.gsm-header .nav-auth > .login-btn svg line,
+  header.gsm-header .nav-auth > .login-btn svg polyline,
+  header.gsm-header .customer-header-auth > .btn,
+  header.gsm-header .customer-header-auth > .btn *,
+  header.gsm-header .customer-header-auth > .btn svg,
+  header.gsm-header .customer-header-auth > .btn svg path,
+  header.gsm-header .customer-header-auth > .btn svg circle,
+  header.gsm-header .customer-header-auth > .btn svg rect,
+  header.gsm-header .customer-header-auth > .btn svg line,
+  header.gsm-header .customer-header-auth > .btn svg polyline {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Inline stroke="white" ko white hi rakhega */
+  header.gsm-header .nav-auth > .login-btn svg path[stroke="white"],
+  header.gsm-header .nav-auth > .login-btn svg circle[stroke="white"] {
+    stroke: #ffffff !important;
+  }
+
+  /* Mobile menu ka Login button bhi orange box + white text/icons */
+  header.gsm-header .menu-login-btn,
+  header.gsm-header .menu-login-btn * {
+    background-color: #f97316 !important;
+    border-color: #f97316 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  /* Hover/focus/active state */
+  header.gsm-header .nav-auth > .login-btn:hover,
+  header.gsm-header .nav-auth > .login-btn:focus,
+  header.gsm-header .nav-auth > .login-btn:active,
+  header.gsm-header .nav-auth > .login-btn.show,
+  header.gsm-header .customer-header-auth > .btn:hover,
+  header.gsm-header .customer-header-auth > .btn:focus,
+  header.gsm-header .customer-header-auth > .btn:active,
+  header.gsm-header .customer-header-auth > .btn.show,
+  header.gsm-header .menu-login-btn:hover,
+  header.gsm-header .menu-login-btn:focus,
+  header.gsm-header .menu-login-btn:active {
+    background-color: #ea580c !important;
+    background-image: none !important;
+    border-color: #ea580c !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.22) !important;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "INS Unlocker",
+  "alternateName": "INSUNLOCKER",
+  "url": "https://ins-unlocker.com/",
+  "logo": "https://ins-unlocker.com/public/uploads/favicon.ico",
+  "description": "INS UNLOCKER offers professional phone repair tools, mobile unlocking software, IMEI repair & FRP bypass solutions. Trusted by technicians across India.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://ins-unlocker.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/insunlocker",
+    "https://www.instagram.com/insunlocker",
+    "https://www.youtube.com/@insunlocker"
+  ]
+}
+</script>
+<link rel="icon" href="https://ins-unlocker.com/public/uploads/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="https://ins-unlocker.com/public/uploads/favicon.ico"><link rel="icon" type="image/x-icon" sizes="256x256" href="https://ins-unlocker.com/public/uploads/favicon.ico"><style>
+/* ---------- Keyframes ---------- */
+@keyframes cardFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shimmerTop { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+@keyframes pulseDot { 0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5); } 70% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0); } 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); } }
+@keyframes floatIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pulseRing { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+
+/* ================= MAIN ORDER BOX ================= */
+.card.rounded-0.medium-height { border: 1px solid rgba(249, 115, 22, 0.1) !important; border-radius: 22px !important; background: linear-gradient(160deg, #ffffff 0%, #fffaf5 60%, #fff3e8 100%) !important; box-shadow: 0 20px 50px rgba(249, 115, 22, 0.1), 0 4px 12px rgba(0,0,0,0.05) !important; overflow: hidden !important; position: relative; animation: cardFadeIn 0.5s ease; }
+.card.rounded-0.medium-height::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f97316, #fbbf24, #f97316); background-size: 200% 100%; animation: shimmerTop 3s linear infinite; }
+.service-img img { border-radius: 14px !important; border: 2px solid rgba(249, 115, 22, 0.18) !important; box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15) !important; transition: transform 0.3s ease; }
+.service-img img:hover { transform: scale(1.02); }
+.service-title h1 { font-weight: 700 !important; color: #1f2937 !important; letter-spacing: -0.01em; }
+.breadcrumb-item a { color: #f97316 !important; font-weight: 500; }
+.card.rounded-0.medium-height .d-flex.gap-2.border-top.border-bottom { background: rgba(255, 247, 237, 0.6) !important; backdrop-filter: blur(6px); border-top: 1px solid rgba(249,115,22,0.12) !important; border-bottom: 1px solid rgba(249,115,22,0.12) !important; padding: 18px 0 !important; }
+.stat-cell { flex: 1; text-align: center; padding: 6px 10px !important; position: relative; }
+.stat-cell:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); height: 60%; width: 1px; background: rgba(249,115,22,0.15); }
+.stat-lbl { font-size: 10.5px !important; text-transform: uppercase; letter-spacing: 0.08em; color: #b0876b !important; font-weight: 700 !important; margin-bottom: 5px !important; }
+.stat-val { font-size: 18px !important; font-weight: 800 !important; letter-spacing: -0.01em; }
+.stat-val.text-primary { color: #f97316 !important; }
+.stat-val.text-warning { color: #ea580c !important; }
+.stat-val.text-success { color: #16a34a !important; position: relative; }
+.stat-val.text-success::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #16a34a; margin-right: 5px; animation: pulseDot 2s infinite; }
+.input-group .quantity-input { border: 1.5px solid #fed7aa !important; border-radius: 12px 0 0 12px !important; padding: 13px 16px !important; font-weight: 700 !important; font-size: 15px !important; box-shadow: none !important; transition: all 0.25s ease; }
+.input-group .quantity-input:focus { border-color: #f97316 !important; box-shadow: 0 0 0 4px rgba(249,115,22,0.1) !important; }
+.calculated-amount { background: linear-gradient(135deg, #f97316, #ea580c) !important; color: #fff !important; font-weight: 700 !important; border: none !important; border-radius: 0 12px 12px 0 !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2); }
+.card.rounded-0.medium-height input.form-control[type="text"], .card.rounded-0.medium-height input.form-control[type="email"] { border: 1.5px solid #f2e6da !important; border-radius: 12px !important; padding: 13px 16px !important; background: #fdfbf9 !important; transition: all 0.25s ease; }
+.card.rounded-0.medium-height input.form-control:focus { border-color: #f97316 !important; background: #fff !important; box-shadow: 0 0 0 4px rgba(249,115,22,0.1) !important; }
+.form-label { font-weight: 600 !important; color: #374151 !important; font-size: 13.5px !important; }
+.form-label strong { color: #f97316 !important; }
+.form-check-input:checked { background-color: #f97316 !important; border-color: #f97316 !important; }
+.form-check-label a { color: #f97316 !important; font-weight: 600; text-decoration: none; }
+#placeOrderBtn.place-order { background: linear-gradient(135deg, #fb923c, #f97316 50%, #ea580c) !important; background-size: 200% auto !important; border: none !important; border-radius: 14px !important; padding: 15px !important; font-weight: 700 !important; letter-spacing: 0.06em; text-transform: uppercase; font-size: 14.5px !important; box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4) !important; transition: all 0.3s ease !important; position: relative; overflow: hidden; }
+#placeOrderBtn.place-order:hover { background-position: right center !important; transform: translateY(-3px) !important; box-shadow: 0 14px 32px rgba(249, 115, 22, 0.5) !important; }
+#placeOrderBtn.place-order:active { transform: translateY(-1px) !important; }
+
+/* ================= RELATED SERVICES BOX ================= */
+.col-lg-4 .card.rounded-0 { border-radius: 20px !important; border: 1px solid rgba(249, 115, 22, 0.1) !important; background: linear-gradient(160deg, #ffffff 0%, #fffaf5 100%) !important; box-shadow: 0 16px 40px rgba(249, 115, 22, 0.08), 0 4px 10px rgba(0,0,0,0.04) !important; overflow: hidden !important; }
+.col-lg-4 .card-header { background: transparent !important; padding: 20px 24px 0 !important; }
+.analytics-tab .nav-link { border: none !important; color: #9ca3af !important; font-size: 12.5px !important; letter-spacing: 0.08em !important; font-weight: 700 !important; padding: 0 0 10px 0 !important; position: relative; }
+.analytics-tab .nav-link.active { color: #f97316 !important; background: transparent !important; }
+.analytics-tab .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #f97316, #fbbf24); border-radius: 2px; }
+.col-lg-4 .list-group-item { border: none !important; background: transparent !important; padding: 14px 0 !important; border-bottom: 1px solid rgba(249,115,22,0.08) !important; transition: all 0.25s ease; }
+.col-lg-4 .list-group-item:last-child { border-bottom: none !important; }
+.col-lg-4 .list-group-item a { align-items: center !important; border-radius: 12px !important; padding: 8px !important; margin: -8px !important; transition: all 0.25s ease; }
+.col-lg-4 .list-group-item a:hover { background: rgba(249, 115, 22, 0.05) !important; transform: translateX(3px); }
+.col-lg-4 .list-group-item img { border-radius: 12px !important; border: 1.5px solid rgba(249,115,22,0.12) !important; transition: transform 0.3s ease, box-shadow 0.3s ease; object-fit: cover; }
+.col-lg-4 .list-group-item a:hover img { transform: scale(1.05); box-shadow: 0 6px 16px rgba(249, 115, 22, 0.2); }
+.col-lg-4 .list-group-item p.text-muted { color: #374151 !important; font-size: 13.5px !important; font-weight: 600 !important; line-height: 1.4 !important; }
+.col-lg-4 .badge.bg-light-primary { background: linear-gradient(135deg, #fff3e8, #ffe8d1) !important; color: #ea580c !important; font-weight: 700 !important; padding: 5px 10px !important; border-radius: 8px !important; border: 1px solid rgba(249,115,22,0.15); }
+.col-lg-4 .badge.bg-light-warning { background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important; color: #16a34a !important; font-weight: 700 !important; padding: 5px 10px !important; border-radius: 8px !important; letter-spacing: 0.02em; }
+
+/* ================= TOP STRIP (Quick Delivery bar) ================= */
+.top-footer { background: linear-gradient(135deg, #fb923c, #f97316 50%, #ea580c) !important; padding: 8px 0 !important; position: relative; overflow: hidden; }
+.top-footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08), transparent 60%); pointer-events: none; }
+.top-footer-content { position: relative; z-index: 1; padding: 12px 4%; }
+.top-footer .row > div > div:first-child { background: rgba(255,255,255,0.15) !important; border: 1px solid rgba(255,255,255,0.2) !important; backdrop-filter: blur(4px); transition: transform 0.25s ease, background 0.25s ease; }
+.top-footer .row > div:hover > div:first-child { background: rgba(255,255,255,0.25) !important; transform: translateY(-2px) scale(1.05); }
+.top-footer-title { font-size: 14px !important; letter-spacing: 0.01em; }
+
+/* ================= FOOTER - LIGHT + BOXED COLUMNS ================= */
+.footer { background: linear-gradient(160deg, #fff8f2 0%, #fff3e8 100%) !important; position: relative; border-top: 1px solid rgba(249, 115, 22, 0.1); }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #f97316, #fbbf24, #f97316, transparent); }
+.footer-main { padding: 48px 4% 0 !important; }
+.foot-grid { display: grid !important; gap: 18px !important; }
+.foot-grid > div { background: #ffffff !important; border: 1px solid rgba(249, 115, 22, 0.1) !important; border-radius: 16px !important; padding: 22px !important; box-shadow: 0 8px 24px rgba(249, 115, 22, 0.06) !important; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.foot-grid > div:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(249, 115, 22, 0.12) !important; }
+.col-title { color: #ea580c !important; font-weight: 700 !important; font-size: 13px !important; letter-spacing: 0.08em !important; text-transform: uppercase; margin-bottom: 16px !important; position: relative; padding-bottom: 10px; }
+.col-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 28px; height: 2px; background: linear-gradient(90deg, #f97316, #fbbf24); border-radius: 2px; }
+.ct-item { display: flex; align-items: center; gap: 10px; color: #6b5b4f !important; font-size: 13.5px !important; margin-bottom: 10px !important; transition: color 0.2s ease; }
+.ct-item i { color: #f97316 !important; font-size: 14px !important; width: 16px; text-align: center; }
+.ct-item a { color: #6b5b4f !important; text-decoration: none !important; }
+.ct-item:hover, .ct-item:hover a { color: #ea580c !important; }
+.socs { display: flex; gap: 10px; }
+.socs .sc { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #fff7ed !important; border: 1px solid rgba(249, 115, 22, 0.2); color: #f97316 !important; transition: all 0.25s ease; }
+.socs .sc:hover { background: linear-gradient(135deg, #f97316, #ea580c) !important; color: #fff !important; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3); }
+.col-link { display: block !important; color: #6b5b4f !important; font-size: 13.5px !important; text-decoration: none !important; margin-bottom: 11px !important; transition: all 0.2s ease; }
+.col-link:hover { color: #ea580c !important; padding-left: 5px; }
+.app-col-desc { color: #8a7768 !important; font-size: 13px !important; margin-bottom: 16px !important; }
+.abt { display: flex; align-items: center; gap: 10px; background: #fff7ed !important; border: 1px solid rgba(249, 115, 22, 0.15) !important; border-radius: 10px !important; padding: 9px 14px !important; margin-bottom: 10px !important; text-decoration: none !important; transition: all 0.25s ease; }
+.abt:hover { background: #ffe8d1 !important; border-color: rgba(249, 115, 22, 0.3) !important; transform: translateX(3px); }
+.abt i { font-size: 20px !important; color: #f97316 !important; }
+.abt-text small { color: #9c8a7c !important; font-size: 10px !important; display: block; }
+.abt-text strong { color: #2b2018 !important; font-size: 13.5px !important; }
+.foot-bar { border-top: 1px solid rgba(249,115,22,0.12) !important; margin-top: 24px !important; padding: 18px 0 !important; }
+.foot-copy { color: #9c8a7c !important; font-size: 12.5px !important; text-align: center; margin: 0 !important; }
+.foot-copy a { color: #f97316 !important; font-weight: 600; text-decoration: none; }
+.foot-copy a:hover { color: #ea580c !important; }
+@media (min-width: 992px) { .foot-grid { grid-template-columns: repeat(5, 1fr) !important; } }
+@media (max-width: 991px) and (min-width: 576px) { .foot-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 575px) { .foot-grid { grid-template-columns: 1fr !important; } }
+
+/* ================= REMOTE SERVICE LIST PAGE ================= */
+.card.rounded-0.page-top-info { border: 1px solid rgba(249, 115, 22, 0.1) !important; border-radius: 20px !important; background: linear-gradient(160deg, #ffffff 0%, #fff8f2 100%) !important; box-shadow: 0 12px 32px rgba(249, 115, 22, 0.08) !important; overflow: hidden !important; margin-bottom: 24px !important; }
+.service-card-header { background: rgba(255, 247, 237, 0.5) !important; padding: 20px 24px !important; }
+.service-card-header h5 { color: #1f2937 !important; font-weight: 700 !important; letter-spacing: 0.02em; font-size: 15px !important; }
+.service-card-header .breadcrumb-item a { color: #f97316 !important; font-weight: 500; }
+#search-input { border: 1.5px solid #fed7aa !important; border-radius: 12px !important; padding: 11px 16px !important; font-weight: 500 !important; background: #fff !important; min-width: 240px; transition: all 0.25s ease; }
+#search-input:focus { border-color: #f97316 !important; box-shadow: 0 0 0 4px rgba(249,115,22,0.1) !important; }
+#search-input::placeholder { color: #b0876b !important; }
+#service-list .card.rounded-0 { border: 1px solid rgba(249, 115, 22, 0.1) !important; border-radius: 16px !important; background: linear-gradient(160deg, #ffffff 0%, #fffaf5 100%) !important; box-shadow: 0 6px 18px rgba(249, 115, 22, 0.06) !important; transition: all 0.25s ease !important; text-decoration: none !important; overflow: hidden; }
+#service-list .card.rounded-0:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(249, 115, 22, 0.16) !important; border-color: rgba(249, 115, 22, 0.3) !important; }
+#service-list .card-body { padding: 14px 16px !important; }
+#service-list .card-body img, #service-list .card-body svg { border-radius: 10px !important; border: 1.5px solid rgba(249,115,22,0.12) !important; }
+#service-list p.mb-2 { color: #1f2937 !important; font-weight: 600 !important; font-size: 13.5px !important; line-height: 1.4 !important; }
+#service-list .badge.bg-light-primary { background: linear-gradient(135deg, #fff3e8, #ffe8d1) !important; color: #ea580c !important; font-weight: 700 !important; padding: 4px 9px !important; border-radius: 7px !important; border: 1px solid rgba(249,115,22,0.15); }
+#service-list .badge.bg-light-warning { background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important; color: #16a34a !important; font-weight: 700 !important; padding: 4px 9px !important; border-radius: 7px !important; letter-spacing: 0.02em; }
+#no-results-message h2 { color: #b0876b !important; font-weight: 600 !important; font-size: 18px !important; }
+
+/* ================= HOMEPAGE - CAROUSEL, HIGHLIGHT CARDS, PRODUCT SECTIONS ================= */
+.carousel { border-radius: 20px !important; overflow: hidden !important; box-shadow: 0 16px 40px rgba(249, 115, 22, 0.1) !important; border: 1px solid rgba(249, 115, 22, 0.08); }
+.carousel-indicators [data-bs-target] { background-color: #f97316 !important; border-radius: 50% !important; width: 8px !important; height: 8px !important; }
+.heighlight-card { border: 1px solid rgba(249, 115, 22, 0.1) !important; border-radius: 18px !important; background: linear-gradient(160deg, #ffffff 0%, #fffaf5 100%) !important; box-shadow: 0 10px 28px rgba(249, 115, 22, 0.08) !important; overflow: hidden !important; }
+.heighlight-img img { border-radius: 0 !important; }
+.heighlight-card .list-group-item { border: none !important; background: transparent !important; border-bottom: 1px solid rgba(249,115,22,0.08) !important; transition: all 0.25s ease; }
+.heighlight-card .list-group-item:last-child { border-bottom: none !important; }
+.heighlight-card .list-group-item a:hover { transform: translateX(3px); }
+.heighlight-card .list-group-item img { border-radius: 10px !important; border: 1.5px solid rgba(249,115,22,0.12) !important; transition: transform 0.3s ease; }
+.heighlight-card .list-group-item a:hover img { transform: scale(1.05); }
+.heighlight-card p.text-muted { color: #374151 !important; font-weight: 600 !important; font-size: 13px !important; }
+.card.rounded-0.product-section, .card.rounded-0:has(.card-header h5.text-primary) { border: 1px solid rgba(249, 115, 22, 0.1) !important; border-radius: 20px !important; background: linear-gradient(160deg, #ffffff 0%, #fffaf5 100%) !important; box-shadow: 0 12px 32px rgba(249, 115, 22, 0.06) !important; overflow: hidden !important; margin-bottom: 20px !important; }
+.card-header h5.text-primary { color: #ea580c !important; border-color: #f97316 !important; font-weight: 700 !important; letter-spacing: 0.02em; font-size: 14px !important; }
+.card-body .row > .col-lg-4 a.d-flex { border-radius: 14px !important; padding: 10px !important; margin: -10px !important; transition: all 0.25s ease; text-decoration: none !important; }
+.card-body .row > .col-lg-4 a.d-flex:hover { background: rgba(249, 115, 22, 0.05) !important; transform: translateY(-2px); }
+.card-body .row > .col-lg-4 img { border-radius: 12px !important; border: 1.5px solid rgba(249,115,22,0.12) !important; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-body .row > .col-lg-4 a.d-flex:hover img { transform: scale(1.05); box-shadow: 0 6px 16px rgba(249, 115, 22, 0.2); }
+.card-body .row > .col-lg-4 p.text-muted { color: #1f2937 !important; font-weight: 600 !important; font-size: 13px !important; line-height: 1.4 !important; }
+.card-body .row > .col-lg-4 .badge.bg-light-primary { background: linear-gradient(135deg, #fff3e8, #ffe8d1) !important; color: #ea580c !important; font-weight: 700 !important; padding: 4px 9px !important; border-radius: 7px !important; border: 1px solid rgba(249,115,22,0.15); }
+.card-body .row > .col-lg-4 .badge.bg-light-warning { background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important; color: #16a34a !important; font-weight: 700 !important; padding: 4px 9px !important; border-radius: 7px !important; letter-spacing: 0.02em; }
+.seller-card { position: relative; border-radius: 14px !important; overflow: hidden !important; box-shadow: 0 8px 20px rgba(249, 115, 22, 0.1) !important; transition: transform 0.3s ease; }
+.seller-card:hover { transform: translateY(-4px) scale(1.02); }
+.seller-card img { border-radius: 14px !important; border: 1.5px solid rgba(249,115,22,0.15) !important; }
+.seller-card .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.75)); color: #fff !important; font-weight: 700 !important; text-align: center; padding: 10px 6px 8px !important; letter-spacing: 0.02em; }
+
+/* ================= LOGIN / REGISTER MODAL POPUP ================= */
+.modal-content { border: 1px solid rgba(249, 115, 22, 0.12) !important; border-radius: 22px !important; box-shadow: 0 24px 60px rgba(249, 115, 22, 0.18), 0 8px 20px rgba(0,0,0,0.08) !important; overflow: hidden !important; }
+.auth-illus-panel { background: linear-gradient(160deg, #fff8f2 0%, #fff3e8 60%, #ffe8d1 100%) !important; position: relative; }
+.auth-illus-panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f97316, #fbbf24, #f97316); }
+#authFormPanel h1.h5 { color: #1f2937 !important; font-weight: 700 !important; letter-spacing: -0.01em; }
+#authFormPanel .form-control, #authFormPanel .form-select { border: 1.5px solid #f2e6da !important; border-radius: 12px !important; padding: 12px 14px !important; background: #fdfbf9 !important; transition: all 0.25s ease; }
+#authFormPanel .form-control:focus, #authFormPanel .form-select:focus { border-color: #f97316 !important; background: #fff !important; box-shadow: 0 0 0 4px rgba(249,115,22,0.1) !important; }
+#authFormPanel .form-label { font-weight: 600 !important; color: #374151 !important; font-size: 13.5px !important; }
+#authFormPanel .form-check-input:checked { background-color: #f97316 !important; border-color: #f97316 !important; }
+#authFormPanel a { color: #f97316 !important; font-weight: 600 !important; }
+#authFormPanel a:hover { color: #ea580c !important; }
+#authFormPanel .btn-primary { background: linear-gradient(135deg, #fb923c, #f97316 50%, #ea580c) !important; background-size: 200% auto !important; border: none !important; border-radius: 12px !important; padding: 12px !important; font-weight: 700 !important; letter-spacing: 0.03em; box-shadow: 0 6px 18px rgba(249, 115, 22, 0.35) !important; transition: all 0.3s ease !important; }
+#authFormPanel .btn-primary:hover:not(:disabled) { background-position: right center !important; transform: translateY(-2px) !important; box-shadow: 0 10px 24px rgba(249, 115, 22, 0.45) !important; }
+#authFormPanel .btn-primary:disabled { background: #f3e3d6 !important; color: #b0876b !important; box-shadow: none !important; }
+#authFormPanel .btn-outline-primary { border: 1.5px solid #fed7aa !important; color: #ea580c !important; border-radius: 12px !important; padding: 12px !important; font-weight: 700 !important; transition: all 0.25s ease !important; }
+#authFormPanel .btn-outline-primary:hover { background: #fff3e8 !important; border-color: #f97316 !important; color: #ea580c !important; transform: translateY(-2px); }
+#authFormPanel .toggle-password { color: #b0876b !important; }
+#authFormPanel .toggle-password:hover { color: #f97316 !important; }
+#authFormPanel .badge.text-bg-light { background: linear-gradient(135deg, #fff3e8, #ffe8d1) !important; color: #ea580c !important; font-weight: 700 !important; border: 1px solid rgba(249,115,22,0.15); border-radius: 8px !important; }
+#regPasswordRulesPanel { border: 1.5px solid #f2e6da !important; border-radius: 14px !important; background: #fdfbf9 !important; }
+#regPasswordRulesPanel .fw-semibold { color: #1f2937 !important; }
+.pwd-strength-bar { border-radius: 6px !important; transition: all 0.3s ease; }
+.pwd-rule-icon { color: #d1a888 !important; }
+.pwd-rule.text-success .pwd-rule-icon, .pwd-rule.text-success { color: #16a34a !important; }
+#gsmAuthModal .btn-close { background-color: #fff3e8 !important; border-radius: 50% !important; padding: 8px !important; opacity: 1 !important; transition: all 0.25s ease; }
+#gsmAuthModal .btn-close:hover { background-color: #ffe8d1 !important; transform: rotate(90deg); }
+#authFormPanel hr { border-color: rgba(249,115,22,0.15) !important; }
+#authFormPanel .bg-white.text-body-secondary { color: #b0876b !important; font-weight: 600 !important; font-size: 12px !important; }
+
+/* ================= FLOATING SOCIAL BUTTONS ================= */
+.floating-social { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; z-index: 9999; }
+.social-icon { position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; color: white; font-size: 24px; text-decoration: none; transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 6px 16px rgba(0,0,0,0.18); border: 2px solid rgba(255,255,255,0.25); opacity: 0; animation: floatIn 0.5s ease forwards; }
+.social-icon:nth-child(1) { animation-delay: 0.1s; }
+.social-icon:nth-child(2) { animation-delay: 0.25s; }
+.social-icon:nth-child(3) { animation-delay: 0.4s; }
+.social-icon:hover { transform: scale(1.18) translateX(-8px); box-shadow: 0 10px 26px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.5); }
+.social-icon i { position: relative; z-index: 2; }
+.social-icon::after { content: attr(data-tooltip); position: absolute; right: 62px; top: 50%; transform: translateY(-50%) translateX(8px); background: #1f2937; color: #fff; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.social-icon::before { content: ''; position: absolute; right: 54px; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-left-color: #1f2937; opacity: 0; transition: all 0.25s ease; pointer-events: none; }
+.social-icon:hover::after, .social-icon:hover::before { opacity: 1; transform: translateY(-50%) translateX(0); }
+.pulse-ring { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; border: 2px solid currentColor; animation: pulseRing 2s ease-out infinite; pointer-events: none; }
+.tg { background: linear-gradient(135deg, #29b6f6, #0088cc); color: #0088cc; }
+.tg i { color: #fff; }
+.wa { background: linear-gradient(135deg, #25D366, #128C7E); color: #25D366; }
+.wa i { color: #fff; }
+.yt { background: linear-gradient(135deg, #FF3B3B, #CC0000); color: #fff; }
+@media (max-width: 768px) {
+  .floating-social { right: 12px; gap: 10px; }
+  .social-icon { width: 40px; height: 40px; font-size: 19px; }
+  .social-icon::after, .social-icon::before { display: none; }
+}
+</style></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======================================================= -->
+<!--   INS UNLOCKER - COMPLETE PREMIUM PACKAGE (NO HEADER)    -->
+<!--   Part 1: CSS -> paste before </head> on every page      -->
+<!--   Part 2: HTML -> floating social buttons (paste in body)-->
+<!-- ======================================================= -->
+
+
+
+<!-- ======================================================= -->
+<!-- Part 2: HTML - Floating social buttons                   -->
+<!-- Paste anywhere in <body> (e.g. right after <body> tag)    -->
+<!-- ======================================================= -->
+
+<body data-pc-direction="ltr"><div class="floating-social">
+    <a href="https://t.me/insunlockerupdates" target="_blank" class="social-icon tg" data-tooltip="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="pulse-ring"></span>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=919528174113&amp;text=Hello%20from%20INS-UNLOCKER.com" target="_blank" class="social-icon wa" data-tooltip="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="pulse-ring"></span>
+    </a>
+    <a href="https://www.youtube.com/@insunlockertutorial?sub_confirmation=1" target="_blank" class="social-icon yt" data-tooltip="YouTube">
+        <i class="fab fa-youtube"></i>
+    </a>
+</div>
+
+
+<!-- ======================================================= -->
+<!-- Part 3: Animated background (boxes + diagonal waves)     -->
+<!-- Head me daal do (style), Body ke sabse upar daal do (div) -->
+<!-- ======================================================= -->
+
+<style>
+  .cool-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  /* Box shapes */
+  .box {
+    position: absolute;
+    border: 1.5px solid rgba(255, 107, 0, 0.15);
+    border-radius: 4px;
+    background: transparent;
+  }
+
+  .box-1 { width: 280px; height: 180px; top: 8%;  left: 5%;  transform: rotate(-8deg); }
+  .box-2 { width: 220px; height: 220px; top: 25%; right: 8%; transform: rotate(12deg); }
+  .box-3 { width: 300px; height: 160px; bottom: 18%; left: 12%; transform: rotate(6deg); }
+  .box-4 { width: 180px; height: 260px; top: 45%; left: 55%; transform: rotate(-15deg); }
+  .box-5 { width: 240px; height: 140px; bottom: 8%; right: 15%; transform: rotate(9deg); }
+  .box-6 { width: 160px; height: 160px; top: 12%; left: 42%; transform: rotate(18deg); }
+
+  /* Diagonal Wave Lines */
+  .waves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .waves svg {
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+  }
+
+  .wave {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Main diagonal waves */
+  .wave-1 {
+    stroke: #ff6b00;
+    stroke-width: 2.6;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.4));
+    animation: diagonalMove 18s linear infinite;
+  }
+
+  .wave-2 {
+    stroke: #ff8c1a;
+    stroke-width: 2.1;
+    opacity: 0.7;
+    animation: diagonalMove 24s linear infinite reverse;
+  }
+
+  .wave-3 {
+    stroke: #ffaa33;
+    stroke-width: 1.7;
+    opacity: 0.5;
+    animation: diagonalMove 30s linear infinite;
+  }
+
+  .wave-4 {
+    stroke: #ffc266;
+    stroke-width: 1.3;
+    opacity: 0.35;
+    animation: diagonalMove 36s linear infinite reverse;
+  }
+
+  @keyframes diagonalMove {
+    0%   { transform: translate(-5%, -5%) rotate(0deg); }
+    100% { transform: translate(5%, 5%) rotate(0deg); }
+  }
+
+  /* Extra soft floating lines */
+  .soft-line {
+    position: absolute;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #ff6b00, transparent);
+    opacity: 0.25;
+    transform-origin: center;
+  }
+
+  .soft-line-1 { width: 420px; top: 20%; left: 10%; transform: rotate(-25deg); animation: floatLine 12s ease-in-out infinite; }
+  .soft-line-2 { width: 380px; top: 55%; right: 5%;  transform: rotate(18deg);  animation: floatLine 15s ease-in-out infinite reverse; }
+  .soft-line-3 { width: 300px; bottom: 25%; left: 30%; transform: rotate(-12deg); animation: floatLine 18s ease-in-out infinite; }
+
+  @keyframes floatLine {
+    0%, 100% { opacity: 0.15; transform: scaleX(1) rotate(var(--r, -20deg)); }
+    50%      { opacity: 0.4;  transform: scaleX(1.1) rotate(var(--r, -20deg)); }
+  }
+</style>
+
+<div class="cool-bg">
+
+  <!-- Geometric Boxes -->
+  <div class="box box-1"></div>
+  <div class="box box-2"></div>
+  <div class="box box-3"></div>
+  <div class="box box-4"></div>
+  <div class="box box-5"></div>
+  <div class="box box-6"></div>
+
+  <!-- Soft floating lines -->
+  <div class="soft-line soft-line-1" style="--r: -25deg;"></div>
+  <div class="soft-line soft-line-2" style="--r: 18deg;"></div>
+  <div class="soft-line soft-line-3" style="--r: -12deg;"></div>
+
+  <!-- Diagonal Waves -->
+  <div class="waves">
+    <!-- Wave 1 - main tirchi -->
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path class="wave wave-1" d="M-100,200 C200,80 400,350 700,180 C1000,10 1200,320 1500,150 C1800,-20 2000,280 2300,120"></path>
+    </svg>
+
+    <!-- Wave 2 -->
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path class="wave wave-2" d="M-150,450 C150,280 450,620 750,400 C1050,180 1350,580 1650,360 C1950,140 2250,520 2550,300"></path>
+    </svg>
+
+    <!-- Wave 3 -->
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path class="wave wave-3" d="M-80,650 C250,480 550,780 850,580 C1150,380 1450,720 1750,520 C2050,320 2350,680 2650,480"></path>
+    </svg>
+
+    <!-- Wave 4 -->
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path class="wave wave-4" d="M-120,320 C180,180 480,480 780,300 C1080,120 1380,450 1680,280 C1980,110 2280,420 2580,250"></path>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ======================================================= -->
+<!-- Part 4: Standalone ticker page - "Rent's Digital Tools"  -->
+<!-- ======================================================= -->
+
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent's Digital Tools - Ticker</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== FULL WIDTH TICKER ===== */
+    .ticker-container {
+      display: flex;
+      width: 100%;
+      height: 48px;
+      background: #ffffff;
+      border-top: 2px solid #f97316;      /* Orange border top */
+      border-bottom: 0px solid #f97316;   /* Orange border bottom */
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(249, 115, 22, 0.12);
+    }
+
+    /* Fixed Label Box (stable) */
+    .ticker-label {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      z-index: 2;
+      box-shadow: 4px 0 12px rgba(249, 115, 22, 0.25);
+    }
+
+    /* Sliding Area */
+    .ticker-wrapper {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+    }
+
+    /* Soft fade edges */
+    .ticker-wrapper::before,
+    .ticker-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 60px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .ticker-wrapper::before {
+      left: 0;
+      background: linear-gradient(90deg, #ffffff, transparent);
+    }
+
+    .ticker-wrapper::after {
+      right: 0;
+      background: linear-gradient(270deg, #ffffff, transparent);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 45s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: #c2410c;
+      white-space: nowrap;
+    }
+
+    .ticker-item::after {
+      content: '•';
+      color: #fdba74;
+      margin-left: 20px;
+      font-size: 1rem;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Mobile adjustment */
+    @media (max-width: 600px) {
+      .ticker-label {
+        padding: 0 14px;
+        font-size: 0.78rem;
+      }
+      .ticker-item {
+        font-size: 0.78rem;
+        padding: 0 14px;
+      }
+    }
+  </style>
+
+
+
+  <div class="ticker-container">
+    <!-- Stable Box -->
+    <div class="ticker-label">
+      Rent's Digital Tools
+    </div>
+
+    <!-- Sliding Part -->
+    <div class="ticker-wrapper">
+      <div class="ticker-track">
+        <!-- First set -->
+        <span class="ticker-item">AndroidWinTool</span>
+        <span class="ticker-item">Android MultiTool</span>
+        <span class="ticker-item">AnonySHU</span>
+        <span class="ticker-item">APIZU MDM Tool</span>
+        <span class="ticker-item">ArabFRP Tool</span>
+        <span class="ticker-item">CheetahTool</span>
+        <span class="ticker-item">CF Tool</span>
+        <span class="ticker-item">DFT Pro</span>
+        <span class="ticker-item">Griffin-U Tool</span>
+        <span class="ticker-item">HydraTool</span>
+        <span class="ticker-item">KG KillerTool</span>
+        <span class="ticker-item">MDM FixTool</span>
+        <span class="ticker-item">MobileSeaTool</span>
+        <span class="ticker-item">MRT Tool</span>
+        <span class="ticker-item">Pandora Digital</span>
+        <span class="ticker-item">PhoenixKey</span>
+        <span class="ticker-item">Scorpion Tool</span>
+        <span class="ticker-item">TSM Tool</span>
+        <span class="ticker-item">TR Tool Pro</span>
+        <span class="ticker-item">TFM Tool</span>
+        <span class="ticker-item">RTC Tool</span>
+        <span class="ticker-item">UAT Pro Tool</span>
+        <span class="ticker-item">UnlockTool</span>
+
+        <!-- Duplicate for seamless loop -->
+        <span class="ticker-item">AndroidWinTool</span>
+        <span class="ticker-item">Android MultiTool</span>
+        <span class="ticker-item">AnonySHU</span>
+        <span class="ticker-item">APIZU MDM Tool</span>
+        <span class="ticker-item">ArabFRP Tool</span>
+        <span class="ticker-item">CheetahTool</span>
+        <span class="ticker-item">CF Tool</span>
+        <span class="ticker-item">DFT Pro</span>
+        <span class="ticker-item">Griffin-U Tool</span>
+        <span class="ticker-item">HydraTool</span>
+        <span class="ticker-item">KG KillerTool</span>
+        <span class="ticker-item">MDM FixTool</span>
+        <span class="ticker-item">MobileSeaTool</span>
+        <span class="ticker-item">MRT Tool</span>
+        <span class="ticker-item">Pandora Digital</span>
+        <span class="ticker-item">PhoenixKey</span>
+        <span class="ticker-item">Scorpion Tool</span>
+        <span class="ticker-item">TSM Tool</span>
+        <span class="ticker-item">TR Tool Pro</span>
+        <span class="ticker-item">TFM Tool</span>
+        <span class="ticker-item">RTC Tool</span>
+        <span class="ticker-item">UAT Pro Tool</span>
+        <span class="ticker-item">UnlockTool</span>
+      </div>
+    </div>
+  </div>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;2287004a01cc43a29cc3e556e6c47024&quot;,&quot;r&quot;:1,&quot;spa&quot;:2}" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function updateGSMTheme() {
+        // Safe text replacement using TreeWalker
+        var walker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_TEXT,
+            {
+                acceptNode: function(node) {
+                    if (node.parentElement.tagName === 'SCRIPT' || 
+                        node.parentElement.tagName === 'STYLE') {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            }
+        );
+        
+        var textNodes = [];
+        while(walker.nextNode()) {
+            textNodes.push(walker.currentNode);
+        }
+        
+        textNodes.forEach(function(node) {
+            if (node.textContent.match(/Powered by\s*GSM Theme/i)) {
+                node.textContent = node.textContent.replace(
+                    /Powered by\s*GSM Theme/gi, 
+                    'POWERED BY KUNAL'
+                );
+            }
+        });
+        
+        // Update specific links
+        var links = document.querySelectorAll('a');
+        links.forEach(function(link) {
+            if (link.textContent.trim() === 'GSM Theme') {
+                link.href = 'https://ins-unlocker.com';
+                link.style.color = '#f59e0b';
+                link.style.textDecoration = 'none';
+                link.style.fontWeight = 'bold';
+                link.textContent = 'KUNAL';
+            }
+        });
+    }
+    
+    // Initial run
+    updateGSMTheme();
+    
+    // Watch for dynamic content changes
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                updateGSMTheme();
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+});
+</script>
+
+
+<!-- ======================================================= -->
+<!-- Part 6: Standalone announcement/scrolling banner page     -->
+<!-- ======================================================= -->
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        /* Light Mode Scrolling Bar with Top & Bottom Orange Glow Lines */
+        .announce-bar {
+            height: 42px;
+            background: linear-gradient(90deg, #f0f9ff, #fefce8, #fff7ed);
+            overflow: hidden;
+            position: relative;
+            border-top: 2px solid #f97316;          /* ऊपर orange line */
+            border-bottom: 2px solid #f97316;       /* नीचे orange line */
+            box-shadow: 
+                0 0 10px rgba(249, 115, 22, 0.15),  /* soft top glow */
+                0 0 10px rgba(249, 115, 22, 0.15);  /* soft bottom glow */
+        }
+
+        .scroll-container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .scroll-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: smoothScroll 35s linear infinite;
+            font-size: 14.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            color: #1f2937;
+            text-shadow: 
+                0 0 4px rgba(249, 115, 22, 0.3),
+                0 0 8px rgba(249, 115, 22, 0.2);
+            padding: 0 40px;
+        }
+
+        .scroll-text:hover {
+            animation-play-state: paused;
+            text-shadow: 
+                0 0 6px rgba(249, 115, 22, 0.5),
+                0 0 12px rgba(249, 115, 22, 0.35);
+        }
+
+        @keyframes smoothScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .highlight {
+            color: #c2410c;
+            font-weight: 700;
+            text-shadow: 0 0 6px rgba(194, 65, 12, 0.3);
+            margin: 0 10px;
+        }
+
+        .separator {
+            color: #9ca3af;
+            margin: 0 8px;
+        }
+
+        .glow-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #f97316;
+            border-radius: 50%;
+            margin: 0 12px;
+            box-shadow: 0 0 6px rgba(249, 115, 22, 0.5);
+            animation: softPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); opacity: 0.85; }
+            50% { transform: scale(1.4); opacity: 1; }
+        }
+
+        .emoji {
+            font-size: 16px;
+            margin: 0 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .announce-bar { height: 34px; }
+            .scroll-text { font-size: 12.5px; animation-duration: 28s; }
+            .glow-dot { width: 7px; height: 7px; margin: 0 8px; }
+        }
+    </style>
+
+
+
+    <div class="announce-bar">
+        <div class="scroll-container">
+            <div class="scroll-text">
+                <span class="glow-dot"></span>
+                <span class="emoji">🚀</span>
+                <span class="highlight">ALL GSM PROFESSIONAL TOOLS DIRECT DISTRIBUTOR</span>
+                <span class="emoji">✨</span>
+                 |  Chimera  |  Phoenix Service Tool  |  UnlockTool  |  SAM-FRP 
+                 |  The Magic Tool  |  General Unlocker Pro  |  BORNEO LICENSE 
+                 |  GuerraTool  |  MWorker  |  Global Unlocker Pro  |  TFM Tool Pro 
+                 |  HXRU Tools  |  Xiaomi Auth Worldwide Auth + FRP  |  TSM-Pro 
+                 |  Adam Tool  |  Anonymous Xiaomi Tool  |  Moto King Pro 
+                 |  Mdm Fix Tool  |  License  |  Activation  |  Registered 
+                 |  6 month 3 month 12 month activation license  |  Box &amp; Dongle Activation 
+                 |  Social media Service Games  |  Gift Card  |  Play-store Card 
+                 |  Google Card  |  iTunes Card  |  Credit  |  Airtime  |  Readim 
+                 |  Unlock  |  iPhone  |  blackberry  |  Samsung  |  Xiaomi
+                <span class="glow-dot"></span>
+                <span class="emoji">🚀</span>
+                <span class="highlight">ALL GSM PROFESSIONAL TOOLS DIRECT DISTRIBUTOR</span>
+                <span class="emoji">✨</span>
+                 ...
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<div class="floating-social">
+    <a href="https://t.me/insunlockerupdates" target="_blank" class="social-icon tg" data-tooltip="Telegram">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="pulse-ring"></span>
+    </a>
+    <a href="https://api.whatsapp.com/send?phone=919528174113&amp;text=Hello%20from%20INS-UNLOCKER.com" target="_blank" class="social-icon wa" data-tooltip="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="pulse-ring"></span>
+    </a>
+    <a href="https://www.youtube.com/@insunlockertutorial?sub_confirmation=1" target="_blank" class="social-icon yt" data-tooltip="YouTube">
+        <i class="fab fa-youtube"></i>
+    </a>
+</div>
+
+<style>
+@keyframes floatIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.floating-social {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 9999;
+}
+
+.social-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  border: 2px solid rgba(255,255,255,0.25);
+  opacity: 0;
+  animation: floatIn 0.5s ease forwards;
+}
+
+.social-icon:nth-child(1) { animation-delay: 0.1s; }
+.social-icon:nth-child(2) { animation-delay: 0.25s; }
+.social-icon:nth-child(3) { animation-delay: 0.4s; }
+
+.social-icon:hover {
+  transform: scale(1.18) translateX(-8px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.social-icon i {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tooltip on hover */
+.social-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 62px;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  background: #1f2937;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  right: 54px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: #1f2937;
+  opacity: 0;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.social-icon:hover::after,
+.social-icon:hover::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Pulsing ring for the top two (Telegram/WhatsApp) */
+.pulse-ring {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: pulseRing 2s ease-out infinite;
+  pointer-events: none;
+}
+
+/* Telegram */
+.tg { background: linear-gradient(135deg, #29b6f6, #0088cc); color: #0088cc; }
+.tg i { color: #fff; }
+
+/* WhatsApp */
+.wa { background: linear-gradient(135deg, #25D366, #128C7E); color: #25D366; }
+.wa i { color: #fff; }
+
+/* YouTube */
+.yt { background: linear-gradient(135deg, #FF3B3B, #CC0000); color: #fff; }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .floating-social {
+    right: 12px;
+    gap: 10px;
+  }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 19px;
+  }
+  .social-icon::after,
+  .social-icon::before {
+    display: none; /* tooltip hide on mobile, no hover anyway */
+  }
+}
+</style>
+
+    
+        
+        <div id="gsmtheme-content" class="" style="">
+                <header class="gsm-header">
+        <div class="gsm-theme-header">
+            <a href="/" class="nav-logo">
+                <img src="/media/1768653718832-removebg-preview.png" alt="logo" class="logo">
+            </a>
+            <div class="nav-container">
+                <button class="nav-arrow nav-arrow-left" id="arrowLeft" title="Scroll left">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <div class="nav-scroll-wrap" id="navWrap">
+                    <div class="nav-track" id="navTrack">
+                        <ul class="nav-links">
+                                <li>
+        <a href="/">🏠Home</a>
+    </li>    <li class="has-drop" data-drop="drop-down-2">
+        <a href="#">💎Service List
+            <svg class="chevron" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+    </li>    <li>
+        <a href="https://ins-unlocker.com/add/balance">💸Auto Add Fund {login}</a>
+    </li>    <li>
+        <a href="https://insfrptool.com/">🤖Xiaomi/Realme</a>
+    </li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="nav-arrow nav-arrow-right" id="arrowRight" title="Scroll right">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            <div class="dropdown d-none d-lg-block">
+    <button class="btn dropdown-toggle arrow-none me-0 currency-btn rounded-2" data-bs-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
+        USD
+        <i class="bi bi-chevron-down ms-auto"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-end currency-dropdown">
+            <a href="https://ins-unlocker.com/update-default-currency/Indian%20Rupee/INR" class="dropdown-item">INR</a>    <a href="https://ins-unlocker.com/update-default-currency/US%20Dollar/USD" class="dropdown-item">USD</a>
+    </div>
+</div>
+<div class="nav-auth">
+    <button class="btn btn-primary rounded-2 d-none d-lg-flex align-items-center gap-1 login-btn" data-bs-toggle="modal" data-bs-target="#gsmAuthModal" data-auth-view="login">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="white" stroke-width="1.8" stroke-linecap="round"></path>
+            <circle cx="12" cy="7" r="4" stroke="white" stroke-width="1.8"></circle>
+        </svg>
+        Login <span class="customer-auth-btn"></span> Register
+    </button>
+</div>
+            <button class="navbar-toggler rounded fs-2 ms-auto d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas" aria-controls="menuOffcanvas" aria-expanded="false" aria-label="Toggle navigation" style="outline: none; box-shadow: none;">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </header>
+        <div class="gsm-dropdown" id="drop-down-2">
+            <a href="/imei/service">✨IMEI ORDER</a>    <a href="/server/service">🖥️ ACTIVATION/CREDIT</a>    <a href="/remote/service">🌐 TOOL RENT</a>
+    </div>
+            <div class="my-4">
+                <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide mb-4" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+        </ol>
+        <div class="carousel-inner">
+                <div class="carousel-item active">
+        <img class="img-fluid d-block w-100 border" src="/media/file-000000008a1c821194fdb3e45bbe6d37.png" alt="slide" height="736" width="2135" style="max-width:1515px; max-height:550px">
+    </div>
+        </div>
+    </div>    <div class="card rounded-0">
+        <div class="card-header border-bottom-0 pt-4 pb-2">
+            <h5 class="text-primary text-uppercase fs-5 border-start border-primary border-5 ps-2">Best Selling</h5>
+        </div>
+        <div class="card-body py-0">
+            <div class="row">
+                    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/insfrptool-realme-auth-otp-insfrptool-com" class="d-flex gap-4">
+            <img src="/media/1000049445.png" alt="(INS) INSFRPTOOL REALME AUTH OTP [ insfrptool.com ]" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">(INS) INSFRPTOOL REALME AUTH OTP [ insfrptool.com ]</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">4.67 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/unlocktool-unlock-tool-auto-username-password-time-6-hour" class="d-flex gap-4">
+            <img src="/media/unlock-tool-activation.webp" alt="Unlocktool/Unlock tool ⭐ { Auto Username  Password  [Time:  6 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">Unlocktool/Unlock tool ⭐ { Auto Username  Password  [Time:  6 hour] } ⭐</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.35 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-2 minutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/android-multi-tool-amt-auto-username-password-time-2-hour" class="d-flex gap-4">
+            <img src="/media/amt.png" alt="Android Multi Tool   [ Amt ]  ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">Android Multi Tool   [ Amt ]  ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.3 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-2 minutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/ins-frp-tool-existing-user-xiaomi-assistent-frp" class="d-flex gap-4">
+            <img src="/media/1000049445.png" alt="(INS) INSFRPTOOL CREDIT ( EXISTING USER ) ( XIAOMI ASSISTENT FRP )" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">(INS) INSFRPTOOL CREDIT ( EXISTING USER ) ( XIAOMI ASSISTENT FRP )</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.2 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/tsm-tool-tsm-pro-edition-rent-auto-username-password-time-3-hour" class="d-flex gap-4">
+            <img src="/media/tsm-tool.webp" alt="TSM TOOL/TSM PRO EDITION RENT ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">TSM TOOL/TSM PRO EDITION RENT ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.7 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">INSTANT</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/smart-frp-tool-credit" class="d-flex gap-4">
+            <img src="/media/smartfrptool.jpg" alt="SMART FRP TOOL CREDIT [ smartfrptool.com ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">SMART FRP TOOL CREDIT [ smartfrptool.com ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.97 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant Miniutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/lazy-unlocker-one-click-frp" class="d-flex gap-4">
+            <img src="/media/1000052176.png" alt="LAZY LOADER CREDIT [ home.lazyloader.in ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">LAZY LOADER CREDIT [ home.lazyloader.in ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.11 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/mr-auth-tool-xiaomi-edl-frp-api" class="d-flex gap-4">
+            <img src="/media/mr-auth-tool.webp" alt="MR_AUTH_Tool | Xiaomi EDL | FRP (API)" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">MR_AUTH_Tool | Xiaomi EDL | FRP (API)</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.37 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/tfm-tool-pro-credit-recharge-instant" class="d-flex gap-4">
+            <img src="/media/tfm-tool.webp" alt="TFM Tool Pro Credit Recharge [Instant]" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">TFM Tool Pro Credit Recharge [Instant]</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.91 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-5 Minutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/galaxy-multi-tool-gmt-auto-username-password-time-2-hour" class="d-flex gap-4">
+            <img src="/media/newrent.png" alt="Galaxy Multi Tool   [ GMT ]  ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">Galaxy Multi Tool   [ GMT ]  ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.3 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-2 minute</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/phoenix-service-tool-credits-to-existing-user-any-qnty" class="d-flex gap-4">
+            <img src="/media/default-2.png" alt="Phoenix Service Tool Credits To Existing User - Any Qnty" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">Phoenix Service Tool Credits To Existing User - Any Qnty</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.88 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1 Minutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/sigma-rent-20-minutes" class="d-flex gap-4">
+            <img src="/media/sigmaplus.png" alt="SIGMA RENT 20 MINUTES" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">SIGMA RENT 20 MINUTES</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.99 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-10</span>
+                </div>
+            </div>
+        </a>
+    </div>
+            </div>
+        </div>
+    </div>    <div class="row ">
+        <div class="col-xl-4 col-12">
+            <div class="card rounded-0 heighlight-card">
+                <div class="heighlight-img">
+                    <img src="/media/1000084452.png" class="img-fluid" alt="Top Bannager" width="1600" height="580">
+                </div>
+                <ul class="list-group list-group-flush px-4">
+                        <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/ins-frp-tool-existing-user-xiaomi-assistent-frp" class="d-flex gap-2">
+            <img src="/media/1000049445.png" alt="(INS) INSFRPTOOL CREDIT ( EXISTING USER ) ( XIAOMI ASSISTENT FRP )" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">(INS) INSFRPTOOL CREDIT ( EXISTING USER ) ( XIAOMI ASSISTENT FRP )</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.2 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>    <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/insfrptool-realme-auth-otp-insfrptool-com" class="d-flex gap-2">
+            <img src="/media/1000049445.png" alt="(INS) INSFRPTOOL REALME AUTH OTP [ insfrptool.com ]" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">(INS) INSFRPTOOL REALME AUTH OTP [ insfrptool.com ]</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">4.67 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>    <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/lazy-unlocker-one-click-frp" class="d-flex gap-2">
+            <img src="/media/1000052176.png" alt="LAZY LOADER CREDIT [ home.lazyloader.in ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">LAZY LOADER CREDIT [ home.lazyloader.in ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.11 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-4 col-12">
+            <div class="card rounded-0 heighlight-card">
+                <div class="heighlight-img">
+                    <img src="/media/1000084452.png" class="img-fluid" alt="Top Bannager" width="1600" height="580">
+                </div>
+                <ul class="list-group list-group-flush px-4">
+                        <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/smart-frp-tool-credit" class="d-flex gap-2">
+            <img src="/media/smartfrptool.jpg" alt="SMART FRP TOOL CREDIT [ smartfrptool.com ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">SMART FRP TOOL CREDIT [ smartfrptool.com ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.97 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant Miniutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>    <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/xiaomi-beast-auto-credit" class="d-flex gap-2">
+            <img src="/media/92244.jpg" alt="XIAOMI BEAST CREDIT [ xiaomibeast.com ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">XIAOMI BEAST CREDIT [ xiaomibeast.com ] [ OFFICIAL AUTHORIZED RESELLER ] 🥇</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.98 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>    <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/gs-mi-auth-credits-24-7-instant-delivery" class="d-flex gap-2">
+            <img src="/media/1000077968.png" alt="GS AUTH TOOL XIAOMI CREDIT [ gsauthtool.com ] [ OFFICIAL AUTHORIZED DISTRIBUTOR ] 🥇" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">GS AUTH TOOL XIAOMI CREDIT [ gsauthtool.com ] [ OFFICIAL AUTHORIZED DISTRIBUTOR ] 🥇</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.98 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-4 col-12">
+            <div class="card rounded-0 heighlight-card">
+                <div class="heighlight-img">
+                    <img src="/media/1000084452.png" class="img-fluid" alt="Top Bannager" width="1600" height="580">
+                </div>
+                <ul class="list-group list-group-flush px-4">
+                        <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/android-multi-tool-amt-auto-username-password-time-2-hour" class="d-flex gap-2">
+            <img src="/media/amt.png" alt="Android Multi Tool   [ Amt ]  ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">Android Multi Tool   [ Amt ]  ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.3 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-2 minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>    <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/tsm-tool-tsm-pro-edition-rent-auto-username-password-time-3-hour" class="d-flex gap-2">
+            <img src="/media/tsm-tool.webp" alt="TSM TOOL/TSM PRO EDITION RENT ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">TSM TOOL/TSM PRO EDITION RENT ⭐ { Auto Username  Password  [Time:  2 hour] } ⭐</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.7 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">INSTANT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>    <li class="list-group-item px-0 pb-4">
+        <a href="https://ins-unlocker.com/service/unlocktool-unlock-tool-auto-username-password-time-6-hour" class="d-flex gap-2">
+            <img src="/media/unlock-tool-activation.webp" alt="Unlocktool/Unlock tool ⭐ { Auto Username  Password  [Time:  6 hour] } ⭐" width="105" height="70" class="rounded border">
+            <div class="flex-grow-1 ms-3">
+                <div class="row g-1">
+                    <div class="col-12">
+                        <p class="text-muted mb-1 fw-medium text-truncate-2">Unlocktool/Unlock tool ⭐ { Auto Username  Password  [Time:  6 hour] } ⭐</p>
+                        <div>
+                                <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.35 USD</span>
+                            <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-2 minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card rounded-0">
+        <div class="card-header border-bottom-0 pt-4 pb-2">
+            <h5 class="text-primary text-uppercase fs-5 border-start border-primary border-5 ps-2">Recent Added</h5>
+        </div>
+        <div class="card-body py-0">
+            <div class="row">
+                    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/galaxy-multi-tool-12-months" class="d-flex gap-4">
+            <img src="/media/default-2.png" alt="GALAXY MULTI TOOL 12 Months" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">GALAXY MULTI TOOL 12 Months</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">21 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/galaxy-multi-tool-3-months" class="d-flex gap-4">
+            <img src="/media/default-2.png" alt="Galaxy Multi Tool - 3 Months " width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">Galaxy Multi Tool - 3 Months </p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">9.5 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/galaxy-realme-auth-flash-otp-galaxy-realme-com" class="d-flex gap-4">
+            <img src="/media/64890.webp" alt="GALAXY REALME AUTH FLASH OTP {GRT} (Galaxy-Realme.Com)" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">GALAXY REALME AUTH FLASH OTP {GRT} (Galaxy-Realme.Com)</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">4.52 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/mat-auth-tool-credit-any-qnt-auth-frp-fastboot-to-edl" class="d-flex gap-4">
+            <img src="/media/default-2.png" alt="MAT AUTH TOOL Credit Any Qnt (AUTH, FRP, FASTBOOT TO EDL)❤️" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">MAT AUTH TOOL Credit Any Qnt (AUTH, FRP, FASTBOOT TO EDL)❤️</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.18 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/easy-auth-tool-realme-auth-otp-www-easyauthtool-com" class="d-flex gap-4">
+            <div class="text-primary" style="width:105px; height:70px; min-width: 105px;">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="rounded">
+    <path d="M0 0 C198 0 396 0 600 0 C600 132 600 264 600 400 C402 400 204 400 0 400 C0 268 0 136 0 0 Z " fill="currentColor" transform="translate(0,0)"></path>
+    <path d="M0 0 C1.01012602 -0.00865438 2.02025205 -0.01730876 3.06098795 -0.02622539 C6.42057849 -0.04768784 9.77849068 -0.02658187 13.13806152 -0.00532532 C15.55678596 -0.01182336 17.97550466 -0.02088783 20.39421082 -0.03231812 C26.26650313 -0.05296578 32.13835932 -0.04571477 38.0106138 -0.02481725 C42.78578219 -0.00849088 47.5608207 -0.004344 52.33601379 -0.00878334 C53.35792194 -0.00972935 53.35792194 -0.00972935 54.4004747 -0.01069448 C55.78474108 -0.01204062 57.16900742 -0.0134202 58.55327374 -0.01483283 C71.51424895 -0.02675171 84.47496303 -0.00274992 97.43587881 0.03418525 C108.54161418 0.0650756 119.64704915 0.06744724 130.75280762 0.04838562 C143.66937477 0.0262413 156.58577376 0.02015849 169.50234938 0.04070824 C170.88134223 0.04287104 172.26033511 0.04502013 173.639328 0.04715538 C174.65689536 0.04875493 174.65689536 0.04875493 175.69501963 0.05038679 C180.46092096 0.05683901 185.22673533 0.05210942 189.99263 0.04313087 C196.41470032 0.03145553 202.83637355 0.04676029 209.25837135 0.07987404 C211.611724 0.08806521 213.96512386 0.08781621 216.31847191 0.07839584 C219.5379991 0.06692601 222.75594047 0.08641721 225.9753418 0.11352539 C227.36301372 0.09781816 227.36301372 0.09781816 228.77871943 0.08179361 C235.52847388 0.18723507 240.87940809 1.93828559 246.4876709 5.75517273 C251.76603059 11.37055068 253.60783803 15.69468986 253.63484192 23.44003296 C253.63851861 24.1229885 253.6421953 24.80594405 253.6459834 25.50959522 C253.6570164 27.80329465 253.66086343 30.09694878 253.66467285 32.39067078 C253.67093785 34.03328597 253.67758468 35.67589974 253.68458557 37.31851196 C253.7056259 42.71796176 253.71598864 48.11741184 253.72595215 53.51689148 C253.72999986 55.37621895 253.73411679 57.23554627 253.73830223 59.09487343 C253.75735465 67.83113732 253.771585 76.56739277 253.7799142 85.30367345 C253.78968411 95.38444285 253.81599698 105.46499253 253.85641509 115.54568452 C253.88659009 123.339438 253.90138443 131.13312855 253.90469521 138.92693931 C253.90704433 143.58076303 253.9159866 148.23435203 253.94115639 152.88811302 C253.96446604 157.26877258 253.96865877 161.64904337 253.958395 166.02974892 C253.95790022 167.63412394 253.96420381 169.23851828 253.97795105 170.84283447 C254.0528064 180.09941131 254.06928922 187.44582532 247.74157715 194.77861023 C247.18341309 195.22462585 246.62524902 195.67064148 246.0501709 196.13017273 C245.49458496 196.5916571 244.93899902 197.05314148 244.36657715 197.52861023 C238.8863281 201.10615326 233.8812239 201.04556681 227.53192139 201.02932739 C226.52127837 201.03456407 225.51063535 201.03980075 224.46936679 201.04519612 C221.07861836 201.06021283 217.68802062 201.06090164 214.29724121 201.06156921 C211.86778508 201.06918959 209.43833137 201.07761688 207.00888062 201.08679199 C200.40547458 201.10875644 193.80210426 201.11756042 187.19867039 201.12261844 C183.07330663 201.12587788 178.94795218 201.13240186 174.82259369 201.13961983 C163.39432196 201.15918322 151.96605887 201.17558891 140.53776932 201.17849636 C139.44122743 201.17877772 139.44122743 201.17877772 138.32253318 201.17906475 C136.84064468 201.179431 135.35875618 201.1797947 133.87686768 201.18015587 C132.77349262 201.18043008 132.77349262 201.18043008 131.64782715 201.18070984 C130.54310091 201.18098066 130.54310091 201.18098066 129.41605696 201.18125696 C117.48516602 201.18479782 105.55445566 201.21181578 93.62362733 201.24920773 C81.36617141 201.28731504 69.10880503 201.30665401 56.85128856 201.30695587 C49.9724367 201.3075399 43.09380027 201.31599668 36.21500397 201.34495354 C29.74382157 201.37206978 23.27295316 201.37335159 16.80173111 201.3572979 C14.42858832 201.35548159 12.05542113 201.36219042 9.68233109 201.37811661 C6.43816793 201.3985587 3.19549947 201.38803476 -0.04864502 201.36990356 C-0.98397403 201.38310353 -1.91930303 201.3963035 -2.88297534 201.40990347 C-9.47691831 201.32594337 -14.14521184 199.61219018 -19.5123291 195.75517273 C-21.6685791 193.40361023 -21.6685791 193.40361023 -23.0123291 191.13017273 C-23.4763916 190.3747821 -23.9404541 189.61939148 -24.4185791 188.84111023 C-26.52647511 184.82105141 -26.64763071 181.60316096 -26.67295837 177.12173462 C-26.67804619 176.44427376 -26.68313401 175.7668129 -26.68837601 175.06882292 C-26.70410001 172.79362059 -26.7126255 170.51845002 -26.72106934 168.24320984 C-26.73060806 166.61369119 -26.74049923 164.98417457 -26.75071716 163.35466003 C-26.78210757 157.99730331 -26.80237321 152.63993105 -26.82092285 147.28251648 C-26.82422017 146.37051082 -26.8275175 145.45850516 -26.83091474 144.51886296 C-26.86170174 135.9141268 -26.88840438 127.30938711 -26.90533352 118.70461178 C-26.92722469 107.70724612 -26.96916027 96.71036966 -27.03877109 85.71319956 C-27.08607637 77.97631923 -27.11027598 70.23957056 -27.11753041 62.50255018 C-27.12247784 57.88429596 -27.13747125 53.26659304 -27.1772747 48.64849663 C-27.21426894 44.29888952 -27.22250926 39.95014562 -27.20926857 35.60041046 C-27.20932231 34.00975394 -27.21953413 32.41905793 -27.2410202 30.82854652 C-27.3601235 21.50855685 -26.9922916 13.95942309 -20.5123291 6.75517273 C-13.93054318 1.56107652 -8.26789654 -0.1257141 0 0 Z " fill="currentColor" transform="translate(186.5123291015625,99.24482727050781)"></path>
+    <path d="M0 0 C2.86589157 1.2991252 4.9083362 2.66526327 7.11157227 4.90470886 C7.70028107 5.49789413 8.28898987 6.09107941 8.89553833 6.70223999 C9.84636795 7.67563828 9.84636795 7.67563828 10.81640625 8.66870117 C11.49331512 9.35334946 12.170224 10.03799774 12.86764526 10.74339294 C14.33535119 12.22874051 15.80084298 13.71627843 17.26437378 15.20573997 C19.57878385 17.55952967 21.90061022 19.90575414 24.22485352 22.24983215 C30.83158179 28.91465618 37.42851433 35.58905132 44.01074219 42.27807617 C48.03771828 46.36932281 52.07665397 50.44842942 56.12350464 54.52001381 C57.66559178 56.07640199 59.2029832 57.6374569 60.73562622 59.20314598 C62.87372425 61.38671452 65.02661165 63.55458994 67.18359375 65.71948242 C67.81748016 66.3744873 68.45136658 67.02949219 69.10446167 67.7043457 C69.69317047 68.2890715 70.28187927 68.8737973 70.88842773 69.47624207 C71.64941017 70.24803441 71.64941017 70.24803441 72.42576599 71.03541851 C73.99376263 72.22218314 73.99376263 72.22218314 76.0869751 71.73346424 C78.29847686 70.88556234 79.65850897 69.84305363 81.42578125 68.26953125 C82.05806641 67.71330078 82.69035156 67.15707031 83.34179688 66.58398438 C83.99212891 65.99939453 84.64246094 65.41480469 85.3125 64.8125 C86.60011175 63.67300907 87.88787156 62.53368542 89.17578125 61.39453125 C91.11030798 59.67829934 93.04360312 57.96095711 94.97021484 56.23583984 C95.59234863 55.68750488 96.21448242 55.13916992 96.85546875 54.57421875 C97.41258545 54.07881592 97.96970215 53.58341309 98.54370117 53.07299805 C100 52 100 52 102 52 C103.56264902 53.84092899 105.00592212 55.68539833 106.4375 57.625 C107.34298571 58.82739886 108.2492626 60.02920224 109.15625 61.23046875 C109.62546875 61.8548584 110.0946875 62.47924805 110.578125 63.12255859 C112.82632267 66.09107509 115.13059917 69.01451657 117.4375 71.9375 C118.36331373 73.11325568 119.28909478 74.28903708 120.21484375 75.46484375 C120.67487793 76.04862793 121.13491211 76.63241211 121.60888672 77.23388672 C124.3599949 80.72660637 127.10593361 84.22339695 129.85058594 87.72119141 C132.27186866 90.80575568 134.69980667 93.88479479 137.13671875 96.95703125 C137.90242188 97.92479492 137.90242188 97.92479492 138.68359375 98.91210938 C139.66991201 100.158457 140.65812994 101.40330416 141.6484375 102.64648438 C145 106.8875378 145 106.8875378 145 108 C62.17 108 -20.66 108 -106 108 C-99.2502522 100.12529423 -99.2502522 100.12529423 -95.52677917 96.41325378 C-94.6869751 95.5735202 -93.84717102 94.73378662 -92.98191833 93.86860657 C-92.07933792 92.97119247 -91.17675751 92.07377838 -90.24682617 91.14916992 C-89.27198298 90.17624943 -88.29736982 89.2030984 -87.32296753 88.22973633 C-85.23734285 86.14725431 -83.15017976 84.06633136 -81.06178856 81.98662376 C-77.76077833 78.69920201 -74.4636451 75.40790995 -71.16706848 72.11604309 C-64.17684664 65.13688528 -57.18238148 58.16198719 -50.1875 51.1875 C-42.6176649 43.63969597 -35.04857388 36.09115431 -27.48432904 28.5377472 C-24.20524302 25.26364899 -20.9237332 21.99200534 -17.64035928 18.72220743 C-15.60437784 16.69366547 -13.57045252 14.66307167 -11.5370903 12.6319046 C-10.13989917 11.23748849 -8.74019919 9.84558765 -7.34043884 8.45375061 C-6.51473389 7.62811615 -5.68902893 6.80248169 -4.83830261 5.951828 C-3.7562846 4.87314091 -3.7562846 4.87314091 -2.65240765 3.77266216 C-0.92651402 2.08864903 -0.92651402 2.08864903 0 0 Z " fill="#FEFEFE" transform="translate(281,178)"></path>
+    <path d="M0 0 C1.01012602 -0.00865438 2.02025205 -0.01730876 3.06098795 -0.02622539 C6.42057849 -0.04768784 9.77849068 -0.02658187 13.13806152 -0.00532532 C15.55678596 -0.01182336 17.97550466 -0.02088783 20.39421082 -0.03231812 C26.26650313 -0.05296578 32.13835932 -0.04571477 38.0106138 -0.02481725 C42.78578219 -0.00849088 47.5608207 -0.004344 52.33601379 -0.00878334 C53.35792194 -0.00972935 53.35792194 -0.00972935 54.4004747 -0.01069448 C55.78474108 -0.01204062 57.16900742 -0.0134202 58.55327374 -0.01483283 C71.51424895 -0.02675171 84.47496303 -0.00274992 97.43587881 0.03418525 C108.54161418 0.0650756 119.64704915 0.06744724 130.75280762 0.04838562 C143.66937477 0.0262413 156.58577376 0.02015849 169.50234938 0.04070824 C170.88134223 0.04287104 172.26033511 0.04502013 173.639328 0.04715538 C174.65689536 0.04875493 174.65689536 0.04875493 175.69501963 0.05038679 C180.46092096 0.05683901 185.22673533 0.05210942 189.99263 0.04313087 C196.41470032 0.03145553 202.83637355 0.04676029 209.25837135 0.07987404 C211.611724 0.08806521 213.96512386 0.08781621 216.31847191 0.07839584 C219.5379991 0.06692601 222.75594047 0.08641721 225.9753418 0.11352539 C227.36301372 0.09781816 227.36301372 0.09781816 228.77871943 0.08179361 C235.52847388 0.18723507 240.87940809 1.93828559 246.4876709 5.75517273 C251.76603059 11.37055068 253.60783803 15.69468986 253.63484192 23.44003296 C253.63851861 24.1229885 253.6421953 24.80594405 253.6459834 25.50959522 C253.6570164 27.80329465 253.66086343 30.09694878 253.66467285 32.39067078 C253.67093785 34.03328597 253.67758468 35.67589974 253.68458557 37.31851196 C253.7056259 42.71796176 253.71598864 48.11741184 253.72595215 53.51689148 C253.72999986 55.37621895 253.73411679 57.23554627 253.73830223 59.09487343 C253.75735465 67.83113732 253.771585 76.56739277 253.7799142 85.30367345 C253.78968411 95.38444285 253.81599698 105.46499253 253.85641509 115.54568452 C253.88659009 123.339438 253.90138443 131.13312855 253.90469521 138.92693931 C253.90704433 143.58076303 253.9159866 148.23435203 253.94115639 152.88811302 C253.96446604 157.26877258 253.96865877 161.64904337 253.958395 166.02974892 C253.95790022 167.63412394 253.96420381 169.23851828 253.97795105 170.84283447 C254.0528064 180.09941131 254.06928922 187.44582532 247.74157715 194.77861023 C247.18341309 195.22462585 246.62524902 195.67064148 246.0501709 196.13017273 C245.49458496 196.5916571 244.93899902 197.05314148 244.36657715 197.52861023 C238.8863281 201.10615326 233.8812239 201.04556681 227.53192139 201.02932739 C226.52127837 201.03456407 225.51063535 201.03980075 224.46936679 201.04519612 C221.07861836 201.06021283 217.68802062 201.06090164 214.29724121 201.06156921 C211.86778508 201.06918959 209.43833137 201.07761688 207.00888062 201.08679199 C200.40547458 201.10875644 193.80210426 201.11756042 187.19867039 201.12261844 C183.07330663 201.12587788 178.94795218 201.13240186 174.82259369 201.13961983 C163.39432196 201.15918322 151.96605887 201.17558891 140.53776932 201.17849636 C139.44122743 201.17877772 139.44122743 201.17877772 138.32253318 201.17906475 C136.84064468 201.179431 135.35875618 201.1797947 133.87686768 201.18015587 C132.77349262 201.18043008 132.77349262 201.18043008 131.64782715 201.18070984 C130.54310091 201.18098066 130.54310091 201.18098066 129.41605696 201.18125696 C117.48516602 201.18479782 105.55445566 201.21181578 93.62362733 201.24920773 C81.36617141 201.28731504 69.10880503 201.30665401 56.85128856 201.30695587 C49.9724367 201.3075399 43.09380027 201.31599668 36.21500397 201.34495354 C29.74382157 201.37206978 23.27295316 201.37335159 16.80173111 201.3572979 C14.42858832 201.35548159 12.05542113 201.36219042 9.68233109 201.37811661 C6.43816793 201.3985587 3.19549947 201.38803476 -0.04864502 201.36990356 C-0.98397403 201.38310353 -1.91930303 201.3963035 -2.88297534 201.40990347 C-9.47691831 201.32594337 -14.14521184 199.61219018 -19.5123291 195.75517273 C-21.6685791 193.40361023 -21.6685791 193.40361023 -23.0123291 191.13017273 C-23.4763916 190.3747821 -23.9404541 189.61939148 -24.4185791 188.84111023 C-26.52647511 184.82105141 -26.64763071 181.60316096 -26.67295837 177.12173462 C-26.67804619 176.44427376 -26.68313401 175.7668129 -26.68837601 175.06882292 C-26.70410001 172.79362059 -26.7126255 170.51845002 -26.72106934 168.24320984 C-26.73060806 166.61369119 -26.74049923 164.98417457 -26.75071716 163.35466003 C-26.78210757 157.99730331 -26.80237321 152.63993105 -26.82092285 147.28251648 C-26.82422017 146.37051082 -26.8275175 145.45850516 -26.83091474 144.51886296 C-26.86170174 135.9141268 -26.88840438 127.30938711 -26.90533352 118.70461178 C-26.92722469 107.70724612 -26.96916027 96.71036966 -27.03877109 85.71319956 C-27.08607637 77.97631923 -27.11027598 70.23957056 -27.11753041 62.50255018 C-27.12247784 57.88429596 -27.13747125 53.26659304 -27.1772747 48.64849663 C-27.21426894 44.29888952 -27.22250926 39.95014562 -27.20926857 35.60041046 C-27.20932231 34.00975394 -27.21953413 32.41905793 -27.2410202 30.82854652 C-27.3601235 21.50855685 -26.9922916 13.95942309 -20.5123291 6.75517273 C-13.93054318 1.56107652 -8.26789654 -0.1257141 0 0 Z M-15.5123291 16.75517273 C-16.92848232 19.58747916 -16.6481318 21.96816936 -16.65950012 25.13668823 C-16.66317681 25.79907716 -16.6668535 26.46146608 -16.6706416 27.1439274 C-16.68169603 29.37396939 -16.68552527 31.60396483 -16.68933105 33.83403015 C-16.69559447 35.42885995 -16.70224116 37.02368829 -16.70924377 38.61851501 C-16.72666689 42.95963215 -16.73720951 47.30073826 -16.7454493 51.6418817 C-16.75059761 54.35393131 -16.75667348 57.06597749 -16.76296043 59.77802467 C-16.7820178 68.262806 -16.79624671 76.74757861 -16.8045724 85.23237723 C-16.81434213 95.02734701 -16.8406524 104.82209064 -16.8810733 114.61698073 C-16.91123861 122.18649652 -16.92604174 129.75594751 -16.92935342 137.32552224 C-16.9317038 141.84686928 -16.94066231 146.36797487 -16.96581459 150.88925743 C-16.98910709 155.14514608 -16.9933239 159.40063455 -16.98305321 163.65657043 C-16.98255799 165.21621342 -16.98887436 166.77587617 -17.00260925 168.33545876 C-17.33705638 179.29628615 -17.33705638 179.29628615 -12.5123291 188.75517273 C-9.66824052 190.5019228 -7.54252581 191.00609746 -4.22625923 191.01244164 C-3.37204671 191.01889053 -2.51783419 191.02533942 -1.63773644 191.03198373 C-0.70408914 191.02888653 0.22955816 191.02578933 1.1914978 191.02259827 C2.68485442 191.02939494 2.68485442 191.02939494 4.20837986 191.03632891 C7.55396508 191.04901826 10.89938845 191.04734961 14.24499512 191.04570007 C16.63976247 191.05168247 19.0345279 191.05848734 21.42929077 191.0660553 C27.26481967 191.08191222 33.10029922 191.08816494 38.93584858 191.08928005 C43.67922437 191.0902304 48.42258683 191.09434002 53.1659584 191.1006813 C66.61429553 191.11829414 80.06260074 191.12752008 93.51094948 191.12602036 C94.23593844 191.12594044 94.96092741 191.12586053 95.70788574 191.1257782 C96.43375988 191.12569644 97.15963401 191.12561468 97.90750434 191.12553044 C109.67232981 191.12471747 121.43702727 191.14385769 133.20181571 191.17205493 C145.28181302 191.20077921 157.36174788 191.21459549 169.44178021 191.21286738 C176.22382394 191.21220333 183.00573346 191.2177021 189.78774643 191.23922348 C196.16533764 191.25855313 202.54264504 191.25876627 208.92024612 191.24419022 C211.2623918 191.24209451 213.60455499 191.24684807 215.94667053 191.25891113 C219.14140863 191.27430126 222.3351605 191.26509601 225.52987671 191.24964905 C226.92365549 191.26507974 226.92365549 191.26507974 228.34559143 191.28082216 C233.85757412 191.22183296 237.19493607 190.5615514 241.4876709 186.75517273 C243.96289112 183.41607414 243.74140489 180.1489154 243.74836731 176.08172607 C243.75219286 175.41213362 243.7560184 174.74254116 243.75995988 174.05265802 C243.7702739 171.81026848 243.76630085 169.56813576 243.7623291 167.32572937 C243.76667646 165.71750654 243.77185969 164.10928579 243.77781677 162.50106812 C243.79121531 158.13331665 243.79178451 153.76565167 243.78925347 149.39788365 C243.78818436 145.7521706 243.79306558 142.10647508 243.79785889 138.46076578 C243.80895699 129.86040178 243.80938975 121.26008145 243.80334473 112.65971375 C243.79730336 103.78579029 243.80961938 94.91202533 243.8309148 86.03812891 C243.84852434 78.42018849 243.85453319 70.80229854 243.85127705 63.18433851 C243.84946305 58.63407962 243.852112 54.08393379 243.86599159 49.53369331 C243.87855485 45.25483661 243.87664015 40.97622719 243.8635807 36.69737434 C243.8612121 35.12722694 243.86395976 33.55706221 243.87220383 31.98693466 C243.88264943 29.84286974 243.87458917 27.69963794 243.8618927 25.55560303 C243.86206044 24.35601487 243.86222818 23.15642672 243.86240101 21.9204874 C243.43620045 18.32040604 242.78048619 16.55675068 240.4876709 13.75517273 C235.38546165 10.20490244 230.57069978 10.32392949 224.58802795 10.35403442 C223.59553714 10.34723775 222.60304633 10.34044109 221.58048004 10.33343846 C218.25720062 10.31445879 214.93428951 10.31690382 211.61096191 10.31938171 C209.22737148 10.3104048 206.84378541 10.30019671 204.46020508 10.28884888 C198.65936092 10.26509363 192.85862839 10.25568604 187.05773801 10.25401174 C182.34206194 10.25258483 177.62641598 10.24641348 172.91074944 10.23690987 C159.53462328 10.21050198 146.15856924 10.19665021 132.78241683 10.19890129 C132.06180839 10.19902116 131.34119994 10.19914103 130.59875488 10.19926453 C129.87726468 10.19938717 129.15577447 10.19950981 128.41242092 10.19963617 C116.71622725 10.20085587 105.02032317 10.17213644 93.32421327 10.12984943 C81.30854701 10.08675044 69.29302198 10.06603919 57.27727646 10.06863075 C50.53372615 10.06962628 43.7904796 10.06140234 37.04699898 10.0290966 C30.70619782 10.00008319 24.36603875 9.99979468 18.02521515 10.0216465 C15.69799552 10.0247876 13.37073612 10.01767398 11.04358482 9.99956512 C7.86639798 9.9764425 4.69143569 9.99030773 1.51429749 10.01345825 C0.13277074 9.99031222 0.13277074 9.99031222 -1.27666563 9.96669859 C-7.71223479 10.0703374 -11.29074614 11.85448607 -15.5123291 16.75517273 Z " fill="#FAFCFC" transform="translate(186.5123291015625,99.24482727050781)"></path>
+    <path d="M0 0 C6.30195877 3.7185471 11.23632072 9.33396215 13.5625 16.3125 C14.45228593 24.66377656 13.63947089 31.45370759 8.5625 38.3125 C3.31582572 43.41108267 -2.32610206 46.59276889 -9.75 46.625 C-17.18239044 46.47495174 -23.03154133 44.56829315 -28.4375 39.3125 C-33.95425962 32.06190165 -35.42290107 25.28348894 -34.4375 16.3125 C-32.57214824 9.23918627 -27.22472647 4.46993419 -21.4375 0.3125 C-14.89584597 -2.93722491 -6.64330972 -3.119577 0 0 Z " fill="#FBFDFD" transform="translate(238.4375,135.6875)"></path>
+    <path d="M0 0 C125.235 0.495 125.235 0.495 253 1 C251 3 251 3 249.14218366 3.24839699 C247.99960519 3.24725783 247.99960519 3.24725783 246.83394432 3.24609566 C245.95562993 3.25007775 245.07731555 3.25405985 244.17238557 3.25816262 C243.20158323 3.25233693 242.23078089 3.24651125 241.2305603 3.24050903 C240.20387981 3.24221788 239.17719932 3.24392673 238.1194073 3.24568737 C234.6568465 3.24899863 231.19447673 3.23795167 227.73193359 3.22705078 C225.25876368 3.22648702 222.78559343 3.22680254 220.31242371 3.22793579 C214.97637826 3.22839218 209.64039302 3.22269565 204.30436325 3.21146011 C196.58931088 3.19522586 188.87428217 3.18999924 181.15921457 3.18748413 C168.64291351 3.18310376 156.12663848 3.1697854 143.61035156 3.15087891 C131.44987112 3.13252894 119.28939774 3.11836812 107.12890625 3.10986328 C106.00509059 3.10907511 106.00509059 3.10907511 104.85857157 3.10827102 C101.100111 3.105661 97.34165038 3.10313357 93.58318973 3.10064721 C62.38877422 3.07990406 31.19439106 3.04452088 0 3 C0 2.01 0 1.02 0 0 Z " fill="currentColor" transform="translate(174,285)"></path>
+    </svg>
+</div>
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">Easy Auth Tool Realme Auth  OTP (www.easyauthtool.com))</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">4.8 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Miniutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/tecno-infinix-id-removal-instant-to-few-seconds-all-models-supported" class="d-flex gap-4">
+            <img src="/media/default-2.png" alt="TECNO, INFINIX ID Removal - Instant To  Few Seconds (All Models Supported)" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">TECNO, INFINIX ID Removal - Instant To  Few Seconds (All Models Supported)</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">3.9 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/rft-loader-credit-transfer-existing-user" class="d-flex gap-4">
+            <img src="/media/rft-loader-otp.png" alt="RFT Loader Credit Transfer [Existing User]" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">RFT Loader Credit Transfer [Existing User]</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">1 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/unlocktool-net-12-months" class="d-flex gap-4">
+            <img src="/media/unlock-tool-activation.webp" alt="UnlockTool.net (12 Months)" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">UnlockTool.net (12 Months)</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">40.41 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Instant</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/unlocktool-6-months-license" class="d-flex gap-4">
+            <img src="/media/unlock-tool-activation.webp" alt="UnlockTool 6 Months License" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">UnlockTool 6 Months License</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">24.59 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-6 Hours</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/unlocktool-3-months-license" class="d-flex gap-4">
+            <img src="/media/unlock-tool-activation.webp" alt="UnlockTool 3 Months License" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">UnlockTool 3 Months License</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">16.62 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">1-6 Hours</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/anonyshu-tool-rent-instant-auto-api-24x7-10hour" class="d-flex gap-4">
+            <img src="/media/newrent.png" alt="AnonySHU Tool RENT [instant-Auto API 24x7] 10Hour" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">AnonySHU Tool RENT [instant-Auto API 24x7] 10Hour</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">2.4 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">Miniutes</span>
+                </div>
+            </div>
+        </a>
+    </div>    <div class="col-lg-4 p-3">
+        <a href="https://ins-unlocker.com/service/kgkiller-tool-auto-username-password-time-2-hour" class="d-flex gap-4">
+            <img src="/media/146665.png" alt="KgKiller tool { Auto Username  Password  [Time:  2 hour] }" width="105" height="70" class="rounded border">
+            <div>
+                <p class="text-muted mb-1 fw-medium text-truncate-2">KgKiller tool { Auto Username  Password  [Time:  2 hour] }</p>
+                <div>
+                        <span class="badge bg-light-primary text-uppercase" style="font-size:11px">0.9 USD</span>
+                    <span class="badge bg-light-warning text-uppercase" style="font-size:11px">INSTANT</span>
+                </div>
+            </div>
+        </a>
+    </div>
+            </div>
+        </div>
+    </div>    <div class="card rounded-0 product-section">
+        <div class="card-header border-bottom-0 pt-4 pb-2">
+            <h5 class="text-primary text-uppercase fs-5 border-start border-primary border-5 ps-2">We Are Official Seller</h5>
+        </div>
+        <div class="card-body pt-3">
+            <div class="owl-carousel featured-slider owl-loaded owl-drag">
+                                        
+            <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1226px, 0px, 0px); transition: 0.25s; width: 2454px;"><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/smartfrptool.jpg" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">SMARTFRPTOOL</div>
+    </div></div><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000063063.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">UPRK AUTH TOOL</div>
+    </div></div><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000077968.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">GS AUTH TOOL</div>
+    </div></div><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000052176.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">LAZY LOADER</div>
+    </div></div><div class="owl-item" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000049445.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">INSFRPTOOL</div>
+    </div></div><div class="owl-item" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/92244.jpg" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">XIAOMI BEAST TOOL</div>
+    </div></div><div class="owl-item" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/smartfrptool.jpg" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">SMARTFRPTOOL</div>
+    </div></div><div class="owl-item active" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000063063.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">UPRK AUTH TOOL</div>
+    </div></div><div class="owl-item active" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000077968.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">GS AUTH TOOL</div>
+    </div></div><div class="owl-item active" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000052176.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">LAZY LOADER</div>
+    </div></div><div class="owl-item cloned active" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000049445.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">INSFRPTOOL</div>
+    </div></div><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/92244.jpg" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">XIAOMI BEAST TOOL</div>
+    </div></div><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/smartfrptool.jpg" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">SMARTFRPTOOL</div>
+    </div></div><div class="owl-item cloned" style="width: 155.25px; margin-right: 20px;"><div class="seller-card">
+        <img src="/media/1000063063.png" alt="" class="rounded-1 border">
+        <div class="overlay fs-5">UPRK AUTH TOOL</div>
+    </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots disabled"></div></div>
+        </div>
+    </div>
+
+</div>
+            </div>
+            
+    <div class="top-footer">
+        <div class="top-footer-content text-white">
+            <div class="row g-3">
+
+                <div class="col-6 col-md d-flex align-items-center gap-2">
+                    <div class="d-flex align-items-center justify-content-center rounded-2 flex-shrink-0" style="width:38px;height:38px;background:rgba(255,255,255,.12);">
+                        <i class="bi bi-lightning-charge-fill" style="font-size:18px;color:#e0ffff;"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold top-footer-title">Quick Delivery</div>
+                        <div style="font-size:11px;opacity:.65;">Results within minutes</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md d-flex align-items-center gap-2 justify-content-md-center">
+                    <div class="d-flex align-items-center justify-content-center rounded-2 flex-shrink-0" style="width:38px;height:38px;background:rgba(255,255,255,.12);">
+                        <i class="bi bi-shield-fill-check" style="font-size:18px;color:#e0ffff;"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold top-footer-title">100% Secure</div>
+                        <div style="font-size:11px;opacity:.65;">SSL encrypted platform</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md d-flex align-items-center gap-2 justify-content-md-center">
+                    <div class="d-flex align-items-center justify-content-center rounded-2 flex-shrink-0" style="width:38px;height:38px;background:rgba(255,255,255,.12);">
+                        <i class="bi bi-headset" style="font-size:18px;color:#e0ffff;"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold top-footer-title">24/7 Support</div>
+                        <div style="font-size:11px;opacity:.65;">Always here to help you</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md d-flex align-items-center gap-2 justify-content-md-end">
+                    <div class="d-flex align-items-center justify-content-center rounded-2 flex-shrink-0" style="width:38px;height:38px;background:rgba(255,255,255,.12);">
+                        <i class="bi bi-credit-card-2-front-fill" style="font-size:18px;color:#e0ffff;"></i>
+                    </div>
+                    <div>
+                        <div class="fw-bold top-footer-title">Easy Recharge</div>
+                        <div style="font-size:11px;opacity:.65;">Binance, Tether, Visa &amp; more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="foot-grid">
+                <div class="first-footer">
+                    <div class="col-title">Contact</div>
+                    <div class="ct">
+                        <div class="ct-item"><i class="bi bi-envelope"></i><a href="mailto:akunlocking49@gmail.com">akunlocking49@gmail.com</a></div><div class="ct-item"><i class="bi bi-whatsapp"></i><a href="#" target="_blank">+91 9528174113</a></div><div class="ct-item"><i class="bi bi-clock"></i><span>9 AM – 11 PM GMT</span></div><div class="ct-item"><i class="bi bi-geo-alt"></i><span>INDIA</span></div>
+                        <div class="socs mt-3">
+                            <a href="https://api.whatsapp.com/send?phone=919528174113&amp;text=Hello%20from%20INS-UNLOCKER.com" target="_blank" class="sc"><i class="bi bi-whatsapp"></i></a><a href="https://t.me/+919528174113" target="_blank" class="sc"><i class="bi bi-telegram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-title">Company</div>
+                    <nav class="col-links">
+                        <a href="/" class="col-link">Home</a><a href="/page/about-us" class="col-link">About Us</a><a href="#" class="col-link">Contact Us</a><a href="#" class="col-link">Reseller Panel</a><a href="/imei-checker" class="col-link">Free IMEI Checker</a>                          
+                    </nav>
+                </div>
+                <div>
+                    <div class="col-title">Quick Access</div>
+                    <nav class="col-links">
+                        <a href="/imei/service" class="col-link">IMEI Service</a><a href="/server/service" class="col-link">Server Service</a><a href="/remote/service" class="col-link">Remote Service</a><a href="/service-group" class="col-link">Service by Group</a><a href="#" class="col-link">Best Selling</a>
+                    </nav>
+                </div>
+                <div>
+                    <div class="col-title">Legal</div>
+                    <nav class="col-links">
+                        <a href="/page/privacy-policy" class="col-link">Privacy Policy</a><a href="/page/term-and-condition" class="col-link">Terms of Service</a><a href="#" class="col-link">Delivery Policy</a><a href="/page/cancellation-policy" class="col-link">Cancellation Policy</a><a href="/page/refund-and-return-policy" class="col-link">Refund &amp; Return Policy</a>
+                    </nav>
+                </div>
+                <div class="app-col">
+                    <div class="col-title">Get the App</div>
+                    <p class="app-col-desc">Order, track &amp; get support from your phone.</p>
+                    <div class="app-btns">
+                        <a href="#" class="abt">
+                        <i class="bi bi-apple"></i>
+                        <div class="abt-text">
+                            <small>Download on the</small>
+                            <strong>App Store</strong>
+                        </div>
+                        </a>
+                        <a href="#" class="abt">
+                        <i class="bi bi-google-play"></i>
+                        <div class="abt-text">
+                            <small>Get it on</small>
+                            <strong>Google Play</strong>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="foot-bar">
+                <p class="foot-copy pt-2">© 2026 INS Unlocker. Powered by <a href="https://ins-unlocker.com" target="_blank" style="color: rgb(245, 158, 11); text-decoration: none; font-weight: bold;">KUNAL</a></p>
+            </div>
+        </div>
+    </footer>
+    <div class="modal fade modal-animate" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="modal-body text-center pt-2">
+                        <svg class="success-circle" viewBox="0 0 70 70" style="width:200px; height:200px; margin:auto">
+                            <circle class="circle-bg" cx="35" cy="35" r="30" fill="none" stroke="#2ca87f" stroke-width="4"></circle>
+                            <path class="check" fill="none" stroke="#2ca87f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M20 35 L30 45 L50 25"></path>
+                        </svg>
+                    </div>
+                    <h5 class="text-muted" id="successModalText"></h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-success w-100 rounded" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="menuOffcanvas" aria-labelledby="menuOffcanvasLabel">
+    <div class="offcanvas-header border-bottom bg-primary">
+        <i class="bi bi-chevron-left me-3 fs-4 text-white pointer" data-bs-dismiss="offcanvas" aria-label="Close"></i>
+        <a class="navbar-brand" href="https://ins-unlocker.com">
+            <img src="/media/1768653718832-removebg-preview.png" alt="logo" style="max-width: 150px; max-height:40px">
+        </a>
+    </div>
+<div class="offcanvas-body">        <h5 class="display-6 fs-5 border-bottom mb-2 pb-2">SERVICE LIST</h5>        <a class="text-reset border-bottom mb-2 pb-2 d-block" href="/imei/service">
+           ✨IMEI ORDER <span class="float-end text-muted"><i class="bi bi-chevron-right"></i></span>
+        </a>        <a class="text-reset border-bottom mb-2 pb-2 d-block" href="/server/service">
+           🖥️ ACTIVATION/CREDIT <span class="float-end text-muted"><i class="bi bi-chevron-right"></i></span>
+        </a>        <a class="text-reset border-bottom mb-2 pb-2 d-block" href="/remote/service">
+           🌐 TOOL RENT <span class="float-end text-muted"><i class="bi bi-chevron-right"></i></span>
+        </a>        <button class="btn btn-primary rounded w-100 mt-3 menu-login-btn d-flex align-items-center justify-content-center gap-1" data-bs-toggle="modal" data-bs-target="#gsmAuthModal" data-auth-view="login">
+            <i class="bi bi-person"></i> Login <span class="customer-auth-btn"></span> Register
+        </button>    </div>
+</div>
+            <div class="modal fade" id="gsmAuthModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width:920px">
+        <div class="modal-content border shadow-sm overflow-hidden rounded-3 d-flex flex-column" style="height:615px;max-height:calc(100vh - 2rem);">
+            <div class="row g-0 flex-grow-1 overflow-hidden" style="min-height:0">
+                <div class="col-md-6 d-none d-md-flex align-self-stretch align-items-center justify-content-center overflow-hidden p-4 p-md-5 border-end auth-illus-panel">
+                    <img src="/resource/auth-login-illustration.svg" class="img-fluid" width="300" alt="">
+                </div>
+                <div class="col-12 col-md-6 position-relative d-flex flex-column h-100 overflow-hidden">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="flex-grow-1 overflow-auto p-4 p-md-5 pt-5" id="authFormScroll">
+                        <div class="mx-auto w-100" id="authFormPanel">
+                            <div class="auth-view fade show" id="view-login">
+                                <h1 class="h5 fw-semibold mb-4">Log In</h1>
+                                <div id="loginErrorMount"></div>
+                                <form id="loginForm" novalidate="" autocomplete="off">
+                                    <div class="mb-3">
+                                        <label for="loginEmail" class="form-label fw-semibold mb-1">Email</label>
+                                        <input type="email" name="email" class="form-control email-input" id="loginEmail" placeholder="Email" autocomplete="off" required="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loginPassword" class="form-label fw-semibold mb-1">Password</label>
+                                        <div class="position-relative">
+                                            <input type="password" name="password" class="form-control pe-5" id="loginPassword" placeholder="••••••••" autocomplete="off" required="">
+                                            <button type="button" class="btn btn-link position-absolute top-50 end-0 translate-middle-y px-3 text-secondary toggle-password" data-target="#loginPassword" aria-label="Show password" style="background:none"><i class="bi bi-eye"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input name="trust" class="form-check-input" type="checkbox" id="truestMe" autocomplete="off" checked="">
+                                            <label class="form-check-label small fw-semibold" for="truestMe">Trust this device</label>
+                                        </div>
+                                        <a href="#" class="text-decoration-none" data-switch-view="forgot">Forgot?</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100 rounded-1" disabled="">Log In</button>
+                                </form>
+                                <div class="position-relative text-center mt-4">
+                                    <hr class="mb-0">
+                                    <span class="position-absolute top-50 start-50 translate-middle px-2 bg-white text-body-secondary">or</span>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary w-100 mt-4 rounded-1" data-switch-view="register">Create Account</button>
+                            </div>
+                            <div id="loginOtpMount"></div>
+                            <div id="loginSuccessMount"></div>
+                            <div id="registerCheckEmailMount"></div>
+                            <div class="auth-view fade d-none" id="view-register">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h1 class="h5 fw-semibold mb-0">Create Account</h1>
+                                    <span class="badge text-bg-light text-body-secondary fw-normal">Step <span class="reg-step-current">1</span>/3</span>
+                                </div>
+                                <div id="registerErrorMount"></div>
+                                <form id="registerForm" novalidate="" autocomplete="off">
+                                    <div class="register-step fade show" data-register-step="1">
+                                        <div class="mb-3">
+                                            <label for="regFullName" class="form-label fw-semibold mb-1">Name</label>
+                                            <input type="text" name="name" class="form-control" id="regFullName" placeholder="Your Name" autocomplete="off" required="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="regEmail" class="form-label fw-semibold mb-1">Email</label>
+                                            <input type="email" name="email" class="form-control email-input" id="regEmail" placeholder="Your Email" autocomplete="off" required="">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="regMobile" class="form-label fw-semibold mb-1">Mobile Number</label>
+                                            <input type="tel" name="mobile" class="form-control" id="regMobile" placeholder="Your Mobile Number" autocomplete="off" required="">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="regCurrency" class="form-label fw-semibold mb-1">Currency</label>
+                                            <select class="form-select select2-hidden-accessible" name="currency" id="regCurrency" required="" autocomplete="off" data-select2-id="regCurrency" tabindex="-1" aria-hidden="true">
+                                                    <option value="INR" data-select2-id="2">INR - Indian Rupee</option>    <option value="USD">USD - US Dollar</option>
+                                            </select><span class="select2 select2-container select2-container--bootstrap-5" dir="ltr" data-select2-id="1" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-regCurrency-container"><span class="select2-selection__rendered" id="select2-regCurrency-container" role="textbox" aria-readonly="true" title="INR - Indian Rupee"><span style="font-size:14px">INR - Indian Rupee</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        </div>
+                                        <button type="button" class="btn btn-primary w-100 register-next rounded-1" disabled="">Continue</button>
+                                        </div>
+                                        <div class="register-step fade d-none" data-register-step="2">
+                                        <div class="mb-3">
+                                            <label for="regCountry" class="form-label fw-semibold mb-1">Country</label>
+                                            <select class="form-select" name="country" id="regCountry" required="" autocomplete="off" data-default-country="Afghanistan">
+                                                    <option value="Afghanistan" data-flag-url="/common/flags/af.png">Afghanistan</option>    <option value="Albania" data-flag-url="/common/flags/al.png">Albania</option>    <option value="Algeria" data-flag-url="/common/flags/dz.png">Algeria</option>    <option value="Andorra" data-flag-url="/common/flags/ad.png">Andorra</option>    <option value="Angola" data-flag-url="/common/flags/ao.png">Angola</option>    <option value="Antigua and Barbuda" data-flag-url="/common/flags/ag.png">Antigua and Barbuda</option>    <option value="Argentina" data-flag-url="/common/flags/ar.png">Argentina</option>    <option value="Armenia" data-flag-url="/common/flags/am.png">Armenia</option>    <option value="Australia" data-flag-url="/common/flags/au.png">Australia</option>    <option value="Austria" data-flag-url="/common/flags/at.png">Austria</option>    <option value="Azerbaijan" data-flag-url="/common/flags/az.png">Azerbaijan</option>    <option value="Bahamas" data-flag-url="/common/flags/bs.png">Bahamas</option>    <option value="Bahrain" data-flag-url="/common/flags/bh.png">Bahrain</option>    <option value="Bangladesh" data-flag-url="/common/flags/bd.png">Bangladesh</option>    <option value="Barbados" data-flag-url="/common/flags/bb.png">Barbados</option>    <option value="Belarus" data-flag-url="/common/flags/by.png">Belarus</option>    <option value="Belgium" data-flag-url="/common/flags/be.png">Belgium</option>    <option value="Belize" data-flag-url="/common/flags/bz.png">Belize</option>    <option value="Benin" data-flag-url="/common/flags/bj.png">Benin</option>    <option value="Bhutan" data-flag-url="/common/flags/bt.png">Bhutan</option>    <option value="Bolivia" data-flag-url="/common/flags/bo.png">Bolivia</option>    <option value="Bosnia and Herzegovina" data-flag-url="/common/flags/ba.png">Bosnia and Herzegovina</option>    <option value="Botswana" data-flag-url="/common/flags/bw.png">Botswana</option>    <option value="Brazil" data-flag-url="/common/flags/br.png">Brazil</option>    <option value="Brunei" data-flag-url="/common/flags/bn.png">Brunei</option>    <option value="Bulgaria" data-flag-url="/common/flags/bg.png">Bulgaria</option>    <option value="Burkina Faso" data-flag-url="/common/flags/bf.png">Burkina Faso</option>    <option value="Burundi" data-flag-url="/common/flags/bi.png">Burundi</option>    <option value="Cambodia" data-flag-url="/common/flags/kh.png">Cambodia</option>    <option value="Cameroon" data-flag-url="/common/flags/cm.png">Cameroon</option>    <option value="Canada" data-flag-url="/common/flags/ca.png">Canada</option>    <option value="Cape Verde" data-flag-url="/common/flags/cv.png">Cape Verde</option>    <option value="Central African Republic" data-flag-url="/common/flags/cf.png">Central African Republic</option>    <option value="Chad" data-flag-url="/common/flags/td.png">Chad</option>    <option value="Chile" data-flag-url="/common/flags/cl.png">Chile</option>    <option value="China" data-flag-url="/common/flags/cn.png">China</option>    <option value="Colombia" data-flag-url="/common/flags/co.png">Colombia</option>    <option value="Comoros" data-flag-url="/common/flags/km.png">Comoros</option>    <option value="Congo" data-flag-url="/common/flags/cg.png">Congo</option>    <option value="Congo (DRC)" data-flag-url="/common/flags/cd.png">Congo (DRC)</option>    <option value="Costa Rica" data-flag-url="/common/flags/cr.png">Costa Rica</option>    <option value="Côte d'Ivoire" data-flag-url="/common/flags/ci.png">Côte d'Ivoire</option>    <option value="Croatia" data-flag-url="/common/flags/hr.png">Croatia</option>    <option value="Cuba" data-flag-url="/common/flags/cu.png">Cuba</option>    <option value="Cyprus" data-flag-url="/common/flags/cy.png">Cyprus</option>    <option value="Czech Republic" data-flag-url="/common/flags/cz.png">Czech Republic</option>    <option value="Denmark" data-flag-url="/common/flags/dk.png">Denmark</option>    <option value="Djibouti" data-flag-url="/common/flags/dj.png">Djibouti</option>    <option value="Dominica" data-flag-url="/common/flags/dm.png">Dominica</option>    <option value="Dominican Republic" data-flag-url="/common/flags/do.png">Dominican Republic</option>    <option value="Ecuador" data-flag-url="/common/flags/ec.png">Ecuador</option>    <option value="Egypt" data-flag-url="/common/flags/eg.png">Egypt</option>    <option value="El Salvador" data-flag-url="/common/flags/sv.png">El Salvador</option>    <option value="Equatorial Guinea" data-flag-url="/common/flags/gq.png">Equatorial Guinea</option>    <option value="Eritrea" data-flag-url="/common/flags/er.png">Eritrea</option>    <option value="Estonia" data-flag-url="/common/flags/ee.png">Estonia</option>    <option value="Eswatini" data-flag-url="/common/flags/sz.png">Eswatini</option>    <option value="Ethiopia" data-flag-url="/common/flags/et.png">Ethiopia</option>    <option value="Fiji" data-flag-url="/common/flags/fj.png">Fiji</option>    <option value="Finland" data-flag-url="/common/flags/fi.png">Finland</option>    <option value="France" data-flag-url="/common/flags/fr.png">France</option>    <option value="Gabon" data-flag-url="/common/flags/ga.png">Gabon</option>    <option value="Gambia" data-flag-url="/common/flags/gm.png">Gambia</option>    <option value="Georgia" data-flag-url="/common/flags/ge.png">Georgia</option>    <option value="Germany" data-flag-url="/common/flags/de.png">Germany</option>    <option value="Ghana" data-flag-url="/common/flags/gh.png">Ghana</option>    <option value="Greece" data-flag-url="/common/flags/gr.png">Greece</option>    <option value="Grenada" data-flag-url="/common/flags/gd.png">Grenada</option>    <option value="Guatemala" data-flag-url="/common/flags/gt.png">Guatemala</option>    <option value="Guinea" data-flag-url="/common/flags/gn.png">Guinea</option>    <option value="Guinea-Bissau" data-flag-url="/common/flags/gw.png">Guinea-Bissau</option>    <option value="Guyana" data-flag-url="/common/flags/gy.png">Guyana</option>    <option value="Haiti" data-flag-url="/common/flags/ht.png">Haiti</option>    <option value="Honduras" data-flag-url="/common/flags/hn.png">Honduras</option>    <option value="Hungary" data-flag-url="/common/flags/hu.png">Hungary</option>    <option value="Iceland" data-flag-url="/common/flags/is.png">Iceland</option>    <option value="India" data-flag-url="/common/flags/in.png">India</option>    <option value="Indonesia" data-flag-url="/common/flags/id.png">Indonesia</option>    <option value="Iran" data-flag-url="/common/flags/ir.png">Iran</option>    <option value="Iraq" data-flag-url="/common/flags/iq.png">Iraq</option>    <option value="Ireland" data-flag-url="/common/flags/ie.png">Ireland</option>    <option value="Israel" data-flag-url="/common/flags/il.png">Israel</option>    <option value="Italy" data-flag-url="/common/flags/it.png">Italy</option>    <option value="Jamaica" data-flag-url="/common/flags/jm.png">Jamaica</option>    <option value="Japan" data-flag-url="/common/flags/jp.png">Japan</option>    <option value="Jordan" data-flag-url="/common/flags/jo.png">Jordan</option>    <option value="Kazakhstan" data-flag-url="/common/flags/kz.png">Kazakhstan</option>    <option value="Kenya" data-flag-url="/common/flags/ke.png">Kenya</option>    <option value="Kiribati" data-flag-url="/common/flags/ki.png">Kiribati</option>    <option value="Kuwait" data-flag-url="/common/flags/kw.png">Kuwait</option>    <option value="Kyrgyzstan" data-flag-url="/common/flags/kg.png">Kyrgyzstan</option>    <option value="Laos" data-flag-url="/common/flags/la.png">Laos</option>    <option value="Latvia" data-flag-url="/common/flags/lv.png">Latvia</option>    <option value="Lebanon" data-flag-url="/common/flags/lb.png">Lebanon</option>    <option value="Lesotho" data-flag-url="/common/flags/ls.png">Lesotho</option>    <option value="Liberia" data-flag-url="/common/flags/lr.png">Liberia</option>    <option value="Libya" data-flag-url="/common/flags/ly.png">Libya</option>    <option value="Liechtenstein" data-flag-url="/common/flags/li.png">Liechtenstein</option>    <option value="Lithuania" data-flag-url="/common/flags/lt.png">Lithuania</option>    <option value="Luxembourg" data-flag-url="/common/flags/lu.png">Luxembourg</option>    <option value="Madagascar" data-flag-url="/common/flags/mg.png">Madagascar</option>    <option value="Malawi" data-flag-url="/common/flags/mw.png">Malawi</option>    <option value="Malaysia" data-flag-url="/common/flags/my.png">Malaysia</option>    <option value="Maldives" data-flag-url="/common/flags/mv.png">Maldives</option>    <option value="Mali" data-flag-url="/common/flags/ml.png">Mali</option>    <option value="Malta" data-flag-url="/common/flags/mt.png">Malta</option>    <option value="Marshall Islands" data-flag-url="/common/flags/mh.png">Marshall Islands</option>    <option value="Mauritania" data-flag-url="/common/flags/mr.png">Mauritania</option>    <option value="Mauritius" data-flag-url="/common/flags/mu.png">Mauritius</option>    <option value="Mexico" data-flag-url="/common/flags/mx.png">Mexico</option>    <option value="Micronesia" data-flag-url="/common/flags/fm.png">Micronesia</option>    <option value="Moldova" data-flag-url="/common/flags/md.png">Moldova</option>    <option value="Monaco" data-flag-url="/common/flags/mc.png">Monaco</option>    <option value="Mongolia" data-flag-url="/common/flags/mn.png">Mongolia</option>    <option value="Montenegro" data-flag-url="/common/flags/me.png">Montenegro</option>    <option value="Morocco" data-flag-url="/common/flags/ma.png">Morocco</option>    <option value="Mozambique" data-flag-url="/common/flags/mz.png">Mozambique</option>    <option value="Myanmar" data-flag-url="/common/flags/mm.png">Myanmar</option>    <option value="Namibia" data-flag-url="/common/flags/na.png">Namibia</option>    <option value="Nauru" data-flag-url="/common/flags/nr.png">Nauru</option>    <option value="Nepal" data-flag-url="/common/flags/np.png">Nepal</option>    <option value="Netherlands" data-flag-url="/common/flags/nl.png">Netherlands</option>    <option value="New Zealand" data-flag-url="/common/flags/nz.png">New Zealand</option>    <option value="Nicaragua" data-flag-url="/common/flags/ni.png">Nicaragua</option>    <option value="Niger" data-flag-url="/common/flags/ne.png">Niger</option>    <option value="Nigeria" data-flag-url="/common/flags/ng.png">Nigeria</option>    <option value="North Korea" data-flag-url="/common/flags/kp.png">North Korea</option>    <option value="North Macedonia" data-flag-url="/common/flags/mk.png">North Macedonia</option>    <option value="Norway" data-flag-url="/common/flags/no.png">Norway</option>    <option value="Oman" data-flag-url="/common/flags/om.png">Oman</option>    <option value="Pakistan" data-flag-url="/common/flags/pk.png">Pakistan</option>    <option value="Palau" data-flag-url="/common/flags/pw.png">Palau</option>    <option value="Palestine" data-flag-url="/common/flags/ps.png">Palestine</option>    <option value="Panama" data-flag-url="/common/flags/pa.png">Panama</option>    <option value="Papua New Guinea" data-flag-url="/common/flags/pg.png">Papua New Guinea</option>    <option value="Paraguay" data-flag-url="/common/flags/py.png">Paraguay</option>    <option value="Peru" data-flag-url="/common/flags/pe.png">Peru</option>    <option value="Philippines" data-flag-url="/common/flags/ph.png">Philippines</option>    <option value="Poland" data-flag-url="/common/flags/pl.png">Poland</option>    <option value="Portugal" data-flag-url="/common/flags/pt.png">Portugal</option>    <option value="Qatar" data-flag-url="/common/flags/qa.png">Qatar</option>    <option value="Romania" data-flag-url="/common/flags/ro.png">Romania</option>    <option value="Russia" data-flag-url="/common/flags/ru.png">Russia</option>    <option value="Rwanda" data-flag-url="/common/flags/rw.png">Rwanda</option>    <option value="Saint Kitts and Nevis" data-flag-url="/common/flags/kn.png">Saint Kitts and Nevis</option>    <option value="Saint Lucia" data-flag-url="/common/flags/lc.png">Saint Lucia</option>    <option value="Saint Vincent and the Grenadines" data-flag-url="/common/flags/vc.png">Saint Vincent and the Grenadines</option>    <option value="Samoa" data-flag-url="/common/flags/ws.png">Samoa</option>    <option value="San Marino" data-flag-url="/common/flags/sm.png">San Marino</option>    <option value="São Tomé and Príncipe" data-flag-url="/common/flags/st.png">São Tomé and Príncipe</option>    <option value="Saudi Arabia" data-flag-url="/common/flags/sa.png">Saudi Arabia</option>    <option value="Senegal" data-flag-url="/common/flags/sn.png">Senegal</option>    <option value="Serbia" data-flag-url="/common/flags/rs.png">Serbia</option>    <option value="Seychelles" data-flag-url="/common/flags/sc.png">Seychelles</option>    <option value="Sierra Leone" data-flag-url="/common/flags/sl.png">Sierra Leone</option>    <option value="Singapore" data-flag-url="/common/flags/sg.png">Singapore</option>    <option value="Slovakia" data-flag-url="/common/flags/sk.png">Slovakia</option>    <option value="Slovenia" data-flag-url="/common/flags/si.png">Slovenia</option>    <option value="Solomon Islands" data-flag-url="/common/flags/sb.png">Solomon Islands</option>    <option value="Somalia" data-flag-url="/common/flags/so.png">Somalia</option>    <option value="South Africa" data-flag-url="/common/flags/za.png">South Africa</option>    <option value="South Korea" data-flag-url="/common/flags/kr.png">South Korea</option>    <option value="South Sudan" data-flag-url="/common/flags/ss.png">South Sudan</option>    <option value="Spain" data-flag-url="/common/flags/es.png">Spain</option>    <option value="Sri Lanka" data-flag-url="/common/flags/lk.png">Sri Lanka</option>    <option value="Sudan" data-flag-url="/common/flags/sd.png">Sudan</option>    <option value="Suriname" data-flag-url="/common/flags/sr.png">Suriname</option>    <option value="Sweden" data-flag-url="/common/flags/se.png">Sweden</option>    <option value="Switzerland" data-flag-url="/common/flags/ch.png">Switzerland</option>    <option value="Syria" data-flag-url="/common/flags/sy.png">Syria</option>    <option value="Taiwan" data-flag-url="/common/flags/tw.png">Taiwan</option>    <option value="Tajikistan" data-flag-url="/common/flags/tj.png">Tajikistan</option>    <option value="Tanzania" data-flag-url="/common/flags/tz.png">Tanzania</option>    <option value="Thailand" data-flag-url="/common/flags/th.png">Thailand</option>    <option value="Timor-Leste" data-flag-url="/common/flags/tl.png">Timor-Leste</option>    <option value="Togo" data-flag-url="/common/flags/tg.png">Togo</option>    <option value="Tonga" data-flag-url="/common/flags/to.png">Tonga</option>    <option value="Trinidad and Tobago" data-flag-url="/common/flags/tt.png">Trinidad and Tobago</option>    <option value="Tunisia" data-flag-url="/common/flags/tn.png">Tunisia</option>    <option value="Turkey" data-flag-url="/common/flags/tr.png">Turkey</option>    <option value="Turkmenistan" data-flag-url="/common/flags/tm.png">Turkmenistan</option>    <option value="Tuvalu" data-flag-url="/common/flags/tv.png">Tuvalu</option>    <option value="Uganda" data-flag-url="/common/flags/ug.png">Uganda</option>    <option value="Ukraine" data-flag-url="/common/flags/ua.png">Ukraine</option>    <option value="United Arab Emirates" data-flag-url="/common/flags/ae.png">United Arab Emirates</option>    <option value="United Kingdom" data-flag-url="/common/flags/gb.png">United Kingdom</option>    <option value="United States" data-flag-url="/common/flags/us.png">United States</option>    <option value="Uruguay" data-flag-url="/common/flags/uy.png">Uruguay</option>    <option value="Uzbekistan" data-flag-url="/common/flags/uz.png">Uzbekistan</option>    <option value="Vanuatu" data-flag-url="/common/flags/vu.png">Vanuatu</option>    <option value="Vatican City" data-flag-url="/common/flags/va.png">Vatican City</option>    <option value="Venezuela" data-flag-url="/common/flags/ve.png">Venezuela</option>    <option value="Vietnam" data-flag-url="/common/flags/vn.png">Vietnam</option>    <option value="Yemen" data-flag-url="/common/flags/ye.png">Yemen</option>    <option value="Zambia" data-flag-url="/common/flags/zm.png">Zambia</option>    <option value="Zimbabwe" data-flag-url="/common/flags/zw.png">Zimbabwe</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="regCity" class="form-label fw-semibold mb-1">City</label>
+                                            <input type="text" name="city" class="form-control" id="regCity" placeholder="City" value="" autocomplete="off" required="">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="regAddress" class="form-label fw-semibold mb-1">Address</label>
+                                            <input type="text" name="address" class="form-control" id="regAddress" placeholder="Street address" autocomplete="off" required="">
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <button type="button" class="btn btn-outline-primary flex-fill register-prev rounded-1">Back</button>
+                                            <button type="button" class="btn btn-primary flex-fill register-next rounded-1" disabled="">Continue</button>
+                                        </div>
+                                    </div>
+                                    <div class="register-step fade d-none" data-register-step="3">
+                                        <div class="mb-3">
+                                            <label for="regPassword" class="form-label fw-semibold mb-1">Password</label>
+                                            <div class="position-relative">
+                                            <input type="password" name="password" class="form-control pe-5" id="regPassword" placeholder="Create password" autocomplete="off" required="" minlength="8">
+                                            <button type="button" class="btn btn-link position-absolute top-50 end-0 translate-middle-y px-3 text-secondary toggle-password" data-target="#regPassword" aria-label="Show password" style="background:none"><i class="bi bi-eye"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card border bg-body-tertiary mb-3" id="regPasswordRulesPanel">
+                                            <div class="card-body p-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <span class="fw-semibold">Password strength</span>
+                                                <span class="text-body-secondary pwd-strength-label">Enter a password</span>
+                                            </div>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar pwd-strength-bar bg-secondary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                            </div>
+                                            <ul class="list-unstyled mb-0" id="regPasswordRules">
+                                                <li class="pwd-rule d-flex align-items-center gap-2 mb-2 text-body-secondary" data-rule="length">
+                                                <i class="bi pwd-rule-icon bi-circle text-body-secondary"></i>
+                                                <span class="pwd-rule-text">At least 8 characters</span>
+                                                </li>
+                                                <li class="pwd-rule d-flex align-items-center gap-2 mb-2 text-body-secondary" data-rule="lower">
+                                                <i class="bi pwd-rule-icon bi-circle text-body-secondary"></i>
+                                                <span class="pwd-rule-text">One lowercase letter</span>
+                                                </li>
+                                                <li class="pwd-rule d-flex align-items-center gap-2 mb-2 text-body-secondary" data-rule="upper">
+                                                <i class="bi pwd-rule-icon bi-circle text-body-secondary"></i>
+                                                <span class="pwd-rule-text">One uppercase letter</span>
+                                                </li>
+                                                <li class="pwd-rule d-flex align-items-center gap-2 text-body-secondary" data-rule="special">
+                                                <i class="bi pwd-rule-icon bi-circle text-body-secondary"></i>
+                                                <span class="pwd-rule-text">One special character</span>
+                                                </li>
+                                            </ul>
+                                            </div>
+                                        </div>
+                                        <div class="form-check mb-4">
+                                            <input name="agree" class="form-check-input" type="checkbox" id="regTerms" autocomplete="off" required="" checked="">
+                                            <label class="form-check-label small fw-semibold" for="regTerms">I agree to the <a href="#" class="text-decoration-none">Terms</a></label>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <button type="button" class="btn btn-outline-primary w-50 flex-fill register-prev rounded-1">Back</button>
+                                            <button type="submit" class="btn btn-primary w-50 flex-fill rounded-1" disabled="">Continue</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="backToLogin">
+                                    <div class="position-relative text-center mt-4">
+                                        <hr class="mb-0">
+                                        <span class="position-absolute top-50 start-50 translate-middle px-2 bg-white text-body-secondary">or</span>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-primary w-100 mt-4 rounded-1" data-switch-view="login">Back to Log In</button>
+                                </div>
+                            </div>
+                            <div class="auth-view fade d-none" id="view-forgot">
+                                <h1 class="h5 fw-semibold mb-4">Reset password</h1>
+                                <div id="forgotErrorMount"></div>
+                                <form id="forgotForm">
+                                    <div class="mb-4">
+                                    <label for="forgotEmail" class="form-label fw-semibold mb-1">Email</label>
+                                    <input type="email" name="email" class="form-control email-input" id="forgotEmail" placeholder="Enter Email" required="">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100 rounded-1" disabled="">Next</button>
+                                </form>
+                                <div>
+                                    <div class="position-relative text-center mt-4">
+                                        <hr class="mb-0">
+                                        <span class="position-absolute top-50 start-50 translate-middle px-2 bg-white text-body-secondary">or</span>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-primary w-100 mt-4 rounded-1" data-switch-view="login">Back to Log In</button>
+                                </div>
+                            </div>
+
+                            <div class="auth-view fade d-none text-center" id="view-forgot-success">
+                                <i class="bi bi-envelope-check text-body-secondary mb-3 d-block fs-2"></i>
+                                <h1 class="h5 fw-semibold mb-2">Check your email</h1>
+                                <p class="text-body-secondary small mb-0">Sent to <span class="text-body" id="forgotSuccessEmail"></span></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+            <script data-cfasync="false" type="text/javascript" src="/common/js/jquery.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/select2.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/html2pdf.bundle.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/popper.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/bootstrap.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/jquery.dataTables.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/frontend/js/nprogress.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/lottie-player.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/owl.carousel.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/common/js/notyf.min.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/frontend/js/auth.js?v=2027.62.34"></script>
+<script data-cfasync="false" type="text/javascript" src="/frontend/js/gsmtheme.js?v=2027.62.34"></script>
+            <script data-cfasync="false" type="text/javascript">
+
+    $(document).ready(function(){
+
+        setTimeout(function () {
+            $('#homePageFlashMessage').modal('show');
+        }, 1000);
+
+        $(".owl-carousel").owlCarousel({
+            loop:true,
+            margin:20,
+            dots:false,
+            slideBy: 1,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive:{
+                0:{ items:2 },
+                600:{ items:4 },
+                1000:{ items:6 }
+            },
+        });
+    });
+</script>
+
+            
+        </div><div class="notyf"></div><div class="notyf-announcer" aria-atomic="true" aria-live="polite" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; outline: 0px;"></div>
+    
+    </body></html>

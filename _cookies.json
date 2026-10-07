@@ -1,0 +1,32 @@
+[
+  {
+    "domain": "ins-unlocker.com",
+    "expires": 1791403020.978137,
+    "httpOnly": false,
+    "name": "XSRF-TOKEN",
+    "path": "/",
+    "priority": "Medium",
+    "sameSite": "Lax",
+    "secure": true,
+    "session": false,
+    "size": 352,
+    "sourcePort": 443,
+    "sourceScheme": "Secure",
+    "value": "eyJpdiI6InA0MS9BaVdISFFFWHhQUjBwcEx2amc9PSIsInZhbHVlIjoiUEtGYU9TZ3BaOXQ0N2IvS0tlMFJRaExsTVJ4WWtTdVdScVVlV2lPL1BTa0xwMWhPejNERzBldXRvRkVzdm9aR1J2ZkwxM0txVlVVcjB5QUhYYkQ5bWRkZGJTeUpaRVJQVTdRWWkxTlBuYlJUMmNPQWZCeHhRTnkrMGV0R090dysiLCJtYWMiOiIxOThkYTZlMmNkMzY3ZWNhYmY3ZWE3NTE2MGI5MWNmZTEyNzczOGFkZTY5NWNjY2I3YWU4NzM3MzlhZjY5ZTkxIiwidGFnIjoiIn0%3D"
+  },
+  {
+    "domain": "ins-unlocker.com",
+    "expires": 1791403020.979007,
+    "httpOnly": true,
+    "name": "laravel_session",
+    "path": "/",
+    "priority": "Medium",
+    "sameSite": "Lax",
+    "secure": true,
+    "session": false,
+    "size": 357,
+    "sourcePort": 443,
+    "sourceScheme": "Secure",
+    "value": "eyJpdiI6ImNSSloxTGsyOTVVbWpmb1Z0WEFhNUE9PSIsInZhbHVlIjoiVzE5dVdSL05BeHJ6bDFwZzJ6UTFHL1c1TTI4QVV6VjZOR2h5Y3ZHMzIyNUdNNk1PY2pEVUhia0xXUXJwRngzalYvVk93K2ZVZVJBNXBZRVVGNHQreVJHd2o5TFVVaDJjcXl5VmdnbUdiRDZ6ZTNpWHRzejU0Qy9rRk9HaDVlU08iLCJtYWMiOiJkMGQ1NWJkM2ZiMTQ2YjA4MmMwZDAwOGYzZmRlNmEwYjc4OGIyZDVmNzZlZDljZDY1N2U1YWYzZGY3ZDA0MjA3IiwidGFnIjoiIn0%3D"
+  }
+]

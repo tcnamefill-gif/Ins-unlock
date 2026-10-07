@@ -1,0 +1,9 @@
+[
+  {
+    "method": "POST",
+    "url": "https://ins-unlocker.com/cdn-cgi/rum?",
+    "type": "xhr",
+    "post_data": "{\"startTime\":1791359819386,\"pageloadId\":\"97223511-c0d1-4b55-9593-484ad483b5b9\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://ins-unlocker.com/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.9.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"120\",\"bv\":\"120\"},\"memory\":{\"totalJSHeapSize\":11969081,\"usedJSHeapSize\":7540197,\"jsHeapSizeLimit\":4091543552},\"firstPaint\":3560,\"firstContentfulPaint\":3560,\"timingsV2\":{\"nextHopProtocol\":\"h2\",\"domainLookupStart\":6,\"domainLookupEnd\":167,\"connectStart\":167,\"connectEnd\":593,\"secureConnectionStart\":371,\"requestStart\":593,\"responseStart\":1590,\"responseEnd\":1633,\"domInteractive\":4579,\"domComplete\":6291,\"loadEventStart\":6291,\"loadEventEnd\":6295,\"finalResponseHeadersStart\":1590,\"firstInterimResponseStart\":0,\"transferSize\":35342,\"decodedBodySize\":166671},\"siteToken\":\"2287004a01cc43a29cc3e556e6c47024\",\"st\":2}",
+    "time": "2026-10-07T13:27:06.545582"
+  }
+]
